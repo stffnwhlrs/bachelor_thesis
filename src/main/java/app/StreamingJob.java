@@ -18,24 +18,15 @@
 
 package app;
 
+
+import sources.SingleStockSource;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
 
 import java.util.Properties;
 
-/**
- * Skeleton for a Flink Streaming Job.
- *
- * <p>For a tutorial how to write a Flink streaming application, check the
- * tutorials and examples on the <a href="http://flink.apache.org/docs/stable/">Flink Website</a>.
- *
- * <p>To package your appliation into a JAR file for execution, run
- * 'mvn clean package' on the command line.
- *
- * <p>If you change the name of the main class (with the public static void main(String[] args))
- * method, change the respective entry in the POM.xml file (simply search for 'mainClass').
- */
 public class StreamingJob {
 
 	public static void main(String[] args) throws Exception {
@@ -49,10 +40,41 @@ public class StreamingJob {
 		// set up the streaming execution environment
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		DataStream<String> inputTwitterStream = env.addSource(new TwitterSource(props));
+		// set up single stock streams
+        DataStream<String> TSLA_source = env.addSource(new SingleStockSource("TSLA", 318, 1));
+        DataStream<String> BMW_source= env.addSource(new SingleStockSource("BMW", 80, 1));
+        DataStream<String> DAI_source= env.addSource(new SingleStockSource("DAI", 57, 1));
+        DataStream<String> VOW_source= env.addSource(new SingleStockSource("VOW", 142, 1));
 
-		inputTwitterStream.print();
+        // merge all stock streams
+        DataStream<String> stockSource = TSLA_source.union(BMW_source,DAI_source,VOW_source);
+
+		// Twitter
+//		DataStream<String> inputTwitterStream = env.addSource(new TwitterSource(props));
+//		inputTwitterStream.print();
+
+//        DataStream<String> dataStream = env.addSource(new TestSource());
+        stockSource.print();
 
 		env.execute("StreamingJob");
 	}
+
+	public static class TestSource implements SourceFunction<String> {
+        private int _count = 0;
+        private volatile boolean isRunning = true;
+
+        @Override
+        public void run(SourceContext<String> sourceContext) {
+            while (isRunning && _count < 50) {
+                sourceContext.collect("Halloo" + _count);
+                _count ++;
+            }
+
+        }
+
+        @Override
+        public void cancel() {
+            isRunning = false;
+        }
+    }
 }
