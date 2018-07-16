@@ -28,6 +28,7 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
 import sources.TwitterTermsSource;
+import sources.TwitterUsersSource;
 import translations.StockPriceTranslation;
 
 import java.util.Properties;
@@ -45,11 +46,19 @@ public class StreamingJob {
 		// set up the streaming execution environment
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		// set up twitter sources
+		// set up twitter terms sources
         TwitterSource termsSource = new TwitterSource(props);
         TwitterTermsSource twitterTermsFilter = new TwitterTermsSource();
         termsSource.setCustomEndpointInitializer(twitterTermsFilter);
         DataStream<String> twitterTermsSource = env.addSource(termsSource);
+
+        // set up twitter users source
+        TwitterSource usersSource = new TwitterSource(props);
+        TwitterUsersSource twitterUsersFilter = new TwitterUsersSource();
+        usersSource.setCustomEndpointInitializer(twitterUsersFilter);
+        DataStream<String> twitterUsersSource = env.addSource(usersSource);
+
+        twitterTermsSource.print();
 
 
 		// set up single stock streams
@@ -65,7 +74,7 @@ public class StreamingJob {
         DataStream<StockPrice> stockPriceDataStream = stockSource
                 .map(new StockPriceTranslation());
 
-        stockPriceDataStream.print();
+        // stockPriceDataStream.print();
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream
                 .map(new MapFunction<StockPrice, String>() {
