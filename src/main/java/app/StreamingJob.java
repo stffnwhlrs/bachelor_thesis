@@ -20,12 +20,14 @@ package app;
 
 
 import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.common.serialization.SimpleStringSchema;
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer08;
 import pojos.StockPrice;
 import sources.SingleStockSource;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
+import sources.TwitterTermsSource;
 import translations.StockPriceTranslation;
 
 import java.util.Properties;
@@ -43,6 +45,13 @@ public class StreamingJob {
 		// set up the streaming execution environment
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
+		// set up twitter sources
+        TwitterSource termsSource = new TwitterSource(props);
+        TwitterTermsSource twitterTermsFilter = new TwitterTermsSource();
+        termsSource.setCustomEndpointInitializer(twitterTermsFilter);
+        DataStream<String> twitterTermsSource = env.addSource(termsSource);
+
+
 		// set up single stock streams
         DataStream<String> TSLA_source = env.addSource(new SingleStockSource("TSLA", 318, 1));
         DataStream<String> BMW_source= env.addSource(new SingleStockSource("BMW", 80, 1));
@@ -58,13 +67,15 @@ public class StreamingJob {
 
         stockPriceDataStream.print();
 
+        DataStream<String> stockPriceOutStream = stockPriceDataStream
+                .map(new MapFunction<StockPrice, String>() {
+                    @Override
+                    public String map(StockPrice value) throws Exception {
+                        return value.toString();
+                    }
+                });
 
-		// Twitter
-//		DataStream<String> inputTwitterStream = env.addSource(new TwitterSource(props));
-//		inputTwitterStream.print();
-
-//        DataStream<String> dataStream = env.addSource(new TestSource());
-        // stockSource.print();
+        stockPriceOutStream.addSink(new FlinkKafkaProducer08<>("localhost:9092", "test", new SimpleStringSchema()));
 
 		env.execute("StreamingJob");
 	}

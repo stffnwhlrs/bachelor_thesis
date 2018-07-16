@@ -1,0 +1,5 @@
+app/StreamingJob.class
+translations/StockPriceTranslation.class
+pojos/StockPrice.class
+app/StreamingJob$1.class
+sources/SingleStockSource.class
