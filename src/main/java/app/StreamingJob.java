@@ -19,11 +19,14 @@
 package app;
 
 
+import org.apache.flink.api.common.functions.MapFunction;
+import pojos.StockPrice;
 import sources.SingleStockSource;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
+import translations.StockPriceTranslation;
 
 import java.util.Properties;
 
@@ -49,32 +52,20 @@ public class StreamingJob {
         // merge all stock streams
         DataStream<String> stockSource = TSLA_source.union(BMW_source,DAI_source,VOW_source);
 
+        // translation stock streams
+        DataStream<StockPrice> stockPriceDataStream = stockSource
+                .map(new StockPriceTranslation());
+
+        stockPriceDataStream.print();
+
+
 		// Twitter
 //		DataStream<String> inputTwitterStream = env.addSource(new TwitterSource(props));
 //		inputTwitterStream.print();
 
 //        DataStream<String> dataStream = env.addSource(new TestSource());
-        stockSource.print();
+        // stockSource.print();
 
 		env.execute("StreamingJob");
 	}
-
-	public static class TestSource implements SourceFunction<String> {
-        private int _count = 0;
-        private volatile boolean isRunning = true;
-
-        @Override
-        public void run(SourceContext<String> sourceContext) {
-            while (isRunning && _count < 50) {
-                sourceContext.collect("Halloo" + _count);
-                _count ++;
-            }
-
-        }
-
-        @Override
-        public void cancel() {
-            isRunning = false;
-        }
-    }
 }
