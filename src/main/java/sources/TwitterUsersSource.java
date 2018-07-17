@@ -17,7 +17,8 @@ public class TwitterUsersSource implements TwitterSource.EndpointInitializer, Se
     private static final long THE_ECONOMIST = 5988062L;
     private static final long THE_TELEGRAPH = 16343974L;
     private static final long HANDELSBLATT = 2979574468L;
-    private static final List<Long> USERS = Arrays.asList(TESLA,
+    private static final List<Long> USERS = Arrays.asList(
+            TESLA,
             ELON_MUSK,
             CNN,
             BLOOMBERG,

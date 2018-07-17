@@ -21,7 +21,9 @@ package app;
 
 import constraints.StockPriceConstraint;
 import constraints.TweetConstraint;
-import filters.NoRTFilter;
+import filters.OnlyNPTweets;
+import filters.OnlyTEMTweets;
+import filters.OnlyTSLAFilter;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer08;
@@ -35,6 +37,7 @@ import sources.TwitterTermsSource;
 import sources.TwitterUsersSource;
 import translations.StockPriceTranslation;
 import translations.TweetTranslation;
+
 
 import java.util.Properties;
 
@@ -94,11 +97,17 @@ public class StreamingJob {
         // ------------------------------- Level 2 ---------------------------------------------
         // -------------------------------------------------------------------------------------
 
-        // tweetTermsDataStream = tweetTermsDataStream.filter(new NoRTFilter());
+        // filters TSLA stock prices
+        DataStream<StockPrice> TSLADataStream = stockPriceDataStream.filter(new OnlyTSLAFilter());
 
-        tweetTermsDataStream.print();
+        // filters tweets from newspapers
+        DataStream<Tweet> NPDataStream = tweetUsersDataStream.filter(new OnlyNPTweets());
 
+        // filters tweets from Tesla and Elon Musk
+        DataStream<Tweet> TEMDataStream = tweetUsersDataStream.filter(new OnlyTEMTweets());
 
+        NPDataStream.print();
+        TEMDataStream.print();
 
 
 
