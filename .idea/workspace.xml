@@ -7,20 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b30e963-3d69-4d82-b390-9f9ed5bb00eb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/filters/OnlyNPTweets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/filters/OnlyTEMTweets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/filters/OnlyTSLAFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/bachelor_thesis_jar/bachelor_thesis.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/bachelor_thesis_jar/bachelor_thesis.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sources/TwitterUsersSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sources/TwitterUsersSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bachelor_thesis-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/bachelor_thesis-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/StreamingJob$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/StreamingJob.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sources/TwitterUsersSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sources/TwitterUsersSource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filters/OnlyNPTweets.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/filters/OnlyNPTweets.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filters/OnlyTEMTweets.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/filters/OnlyTEMTweets.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-bachelor_thesis-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-bachelor_thesis-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,13 +28,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StreamingJob.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StreamingJob.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/StreamingJob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+            <state relative-caret-position="2668">
+              <caret line="132" column="38" lean-forward="true" selection-start-line="132" selection-start-column="38" selection-end-line="132" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5469#5481#0" expanded="true" />
+                <element signature="e#5877#6436#0" expanded="true" />
+                <element signature="e#6435#6436#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StockPriceUp.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="66" column="69" selection-start-line="66" selection-start-column="69" selection-end-line="66" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#378#379#0" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
+                <element signature="e#454#455#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#530#531#0" expanded="true" />
+                <element signature="e#564#565#0" expanded="true" />
+                <element signature="e#618#619#0" expanded="true" />
+                <element signature="e#664#665#0" expanded="true" />
+                <element signature="e#700#701#0" expanded="true" />
+                <element signature="e#732#733#0" expanded="true" />
+                <element signature="e#782#783#0" expanded="true" />
+                <element signature="e#824#825#0" expanded="true" />
+                <element signature="e#1292#1293#0" expanded="true" />
+                <element signature="e#1328#1329#0" expanded="true" />
+                <element signature="e#1032#1033#0" expanded="true" />
+                <element signature="e#1081#1082#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,9 +113,10 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/sources/TwitterUsersSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/filters/OnlyTSLAFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" />
         <option value="$PROJECT_DIR$/src/main/java/filters/OnlyTEMTweets.java" />
         <option value="$PROJECT_DIR$/src/main/java/filters/OnlyNPTweets.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java" />
       </list>
     </option>
   </component>
@@ -295,12 +331,12 @@
       <updated>1530801140460</updated>
       <workItem from="1530801145541" duration="4844000" />
       <workItem from="1531679004342" duration="984000" />
-      <workItem from="1531721119719" duration="35381000" />
+      <workItem from="1531721119719" duration="44488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41209000" />
+    <option name="totallyTimeSpent" value="50316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="86" y="1080" width="1045" height="1050" extended-state="6" />
@@ -309,7 +345,7 @@
       <window_info anchor="right" id="PlantUML" order="3" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32984293" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -357,6 +393,9 @@
           <caret line="57" selection-start-line="57" selection-end-line="60" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5469#5481#0" expanded="true" />
+            <element signature="e#5877#6436#0" expanded="true" />
+            <element signature="e#6435#6436#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -386,6 +425,9 @@
           <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5469#5481#0" expanded="true" />
+            <element signature="e#5877#6436#0" expanded="true" />
+            <element signature="e#6435#6436#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -491,13 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="145" column="43" lean-forward="true" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/filters/OnlyTSLAFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -535,12 +570,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/StreamingJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+        <state relative-caret-position="2668">
+          <caret line="132" column="38" lean-forward="true" selection-start-line="132" selection-start-column="38" selection-end-line="132" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5469#5481#0" expanded="true" />
+            <element signature="e#5877#6436#0" expanded="true" />
+            <element signature="e#6435#6436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="66" column="69" selection-start-line="66" selection-start-column="69" selection-end-line="66" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#378#379#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#530#531#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#618#619#0" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="e#1328#1329#0" expanded="true" />
+            <element signature="e#1032#1033#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
           </folding>
         </state>
       </provider>

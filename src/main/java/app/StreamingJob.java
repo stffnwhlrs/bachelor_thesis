@@ -26,8 +26,14 @@ import filters.OnlyTEMTweets;
 import filters.OnlyTSLAFilter;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
+import org.apache.flink.cep.CEP;
+import org.apache.flink.cep.PatternSelectFunction;
+import org.apache.flink.cep.PatternStream;
+import org.apache.flink.cep.pattern.Pattern;
+import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer08;
 import pojos.StockPrice;
+import pojos.StockPriceUp;
 import pojos.Tweet;
 import sources.SingleStockSource;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -39,6 +45,8 @@ import translations.StockPriceTranslation;
 import translations.TweetTranslation;
 
 
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 public class StreamingJob {
@@ -93,9 +101,9 @@ public class StreamingJob {
         // constraint stock prices
         stockPriceDataStream = stockPriceDataStream.filter(new StockPriceConstraint());
 
-        // -------------------------------------------------------------------------------------
-        // ------------------------------- Level 2 ---------------------------------------------
-        // -------------------------------------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------------------
+        // ---------------------------------------------- Level 2 ------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------------------
 
         // filters TSLA stock prices
         DataStream<StockPrice> TSLADataStream = stockPriceDataStream.filter(new OnlyTSLAFilter());
@@ -106,16 +114,49 @@ public class StreamingJob {
         // filters tweets from Tesla and Elon Musk
         DataStream<Tweet> TEMDataStream = tweetUsersDataStream.filter(new OnlyTEMTweets());
 
-        NPDataStream.print();
-        TEMDataStream.print();
+        // -------------------------------------------------------------------------------------------------------------
+        // ---------------------------------------------- Level 3 ------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------------------
+
+        Pattern<StockPrice, ?> pattern = Pattern.<StockPrice>begin("start")
+                .timesOrMore(5)
+                .consecutive()
+                .where(new IterativeCondition<StockPrice>() {
+                    @Override
+                    public boolean filter(StockPrice stockPrice, Context<StockPrice> ctx) throws Exception {
+                        boolean result = true;
+                        for (StockPrice e : ctx.getEventsForPattern("start")) {
+                            if (e.getPrice() > stockPrice.getPrice()) {
+                                result = false;
+                            }
+                        }
+                        return result;
+                    }
+                });
+
+        PatternStream<StockPrice> patternStream = CEP.pattern(TSLADataStream, pattern);
+
+        DataStream<StockPriceUp> result = patternStream.select(
+                new PatternSelectFunction<StockPrice, StockPriceUp>() {
+                    @Override
+                    public StockPriceUp select(Map<String, List<StockPrice>> pattern) throws Exception {
+                        List<StockPrice> list = pattern.get("start");
+                        String symbol = list.get(0).getSymbol();
+                        double startPrice = list.get(0).getPrice();
+                        double endPrice = list.get(list.size()-1).getPrice();
+
+                        return new StockPriceUp(symbol, startPrice, endPrice, list);
+                    }
+                }
+        );
 
 
+        // -------------------------------------------------------------------------------------------------------------
+        // ------------------------------------------------ Out --------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------------------
 
-
-        // -------------------------------------------------------------------------------------
-        // ------------------------------- Out -------------------------------------------------
-        // -------------------------------------------------------------------------------------
-
+        TSLADataStream.print();
+        result.print();
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream
                 .map(new MapFunction<StockPrice, String>() {
