@@ -19,10 +19,14 @@
 package app;
 
 
+import constraints.StockPriceConstraint;
+import constraints.TweetConstraint;
+import filters.NoRTFilter;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer08;
 import pojos.StockPrice;
+import pojos.Tweet;
 import sources.SingleStockSource;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -30,6 +34,7 @@ import org.apache.flink.streaming.connectors.twitter.TwitterSource;
 import sources.TwitterTermsSource;
 import sources.TwitterUsersSource;
 import translations.StockPriceTranslation;
+import translations.TweetTranslation;
 
 import java.util.Properties;
 
@@ -58,10 +63,7 @@ public class StreamingJob {
         usersSource.setCustomEndpointInitializer(twitterUsersFilter);
         DataStream<String> twitterUsersSource = env.addSource(usersSource);
 
-        twitterTermsSource.print();
-
-
-		// set up single stock streams
+        // set up single stock streams
         DataStream<String> TSLA_source = env.addSource(new SingleStockSource("TSLA", 318, 1));
         DataStream<String> BMW_source= env.addSource(new SingleStockSource("BMW", 80, 1));
         DataStream<String> DAI_source= env.addSource(new SingleStockSource("DAI", 57, 1));
@@ -70,11 +72,41 @@ public class StreamingJob {
         // merge all stock streams
         DataStream<String> stockSource = TSLA_source.union(BMW_source,DAI_source,VOW_source);
 
+        // translation twitter sources
+        DataStream<Tweet> tweetTermsDataStream = twitterTermsSource
+                .flatMap(new TweetTranslation());
+
+        DataStream<Tweet> tweetUsersDataStream = twitterUsersSource
+                .flatMap(new TweetTranslation());
+
         // translation stock streams
         DataStream<StockPrice> stockPriceDataStream = stockSource
                 .map(new StockPriceTranslation());
 
-        // stockPriceDataStream.print();
+        // constraint tweets
+        tweetTermsDataStream = tweetTermsDataStream.filter(new TweetConstraint());
+        tweetUsersDataStream = tweetUsersDataStream.filter(new TweetConstraint());
+
+        // constraint stock prices
+        stockPriceDataStream = stockPriceDataStream.filter(new StockPriceConstraint());
+
+        // -------------------------------------------------------------------------------------
+        // ------------------------------- Level 2 ---------------------------------------------
+        // -------------------------------------------------------------------------------------
+
+        // tweetTermsDataStream = tweetTermsDataStream.filter(new NoRTFilter());
+
+        tweetTermsDataStream.print();
+
+
+
+
+
+
+        // -------------------------------------------------------------------------------------
+        // ------------------------------- Out -------------------------------------------------
+        // -------------------------------------------------------------------------------------
+
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream
                 .map(new MapFunction<StockPrice, String>() {
