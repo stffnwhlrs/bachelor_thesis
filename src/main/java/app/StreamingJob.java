@@ -19,11 +19,14 @@
 package app;
 
 
+import filters.OriginalTypeTweet;
+import mappers.RateFluctuationToTweetRateFluctuation;
+import mappers.TweetToTweetRateFluctuation;
 import mediaPresencePattern.MediaPresenceAction;
 import mediaPresencePattern.MediaPresenceCondition;
+import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.cep.nfa.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
-import org.apache.flink.cep.pattern.conditions.SimpleCondition;
 import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import pojos.*;
@@ -52,7 +55,6 @@ import translations.StockPriceTranslation;
 import translations.TweetTranslation;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -110,7 +112,7 @@ public class StreamingJob {
         stockPriceDataStream = stockPriceDataStream.filter(new StockPriceConstraint());
 
         // -------------------------------------------------------------------------------------------------------------
-        // ---------------------------------------------- Level 2 ------------------------------------------------------
+        // ---------------------------------------------- Level 1 ------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
         // filters TSLA stock prices
@@ -123,7 +125,7 @@ public class StreamingJob {
         DataStream<Tweet> TEMDataStream = tweetUsersDataStream.filter(new OnlyTEMTweets());
 
         // -------------------------------------------------------------------------------------------------------------
-        // ---------------------------------------------- Level 3 ------------------------------------------------------
+        // ---------------------------------------------- Level 2 ------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
         // ------------------------------------- stock price up pattern ------------------------------------------------
@@ -189,18 +191,46 @@ public class StreamingJob {
 
         DataStream<HotTopic> hotTopicDataStream = mediaPresencePatternStream.select(new MediaPresenceAction());
 
-        // ------------------------------------ /media presence pattern -----------------------------------------------
+        // ------------------------------------ /media presence pattern ------------------------------------------------
+
+        // -------------------------------------------------------------------------------------------------------------
+        // ---------------------------------------------- Level 4 ------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------------------
+
+        // ------------------------------------ tweet impact on capital markets ------------------------------------------------
+        DataStream<TweetRateFluctuation> modifiedTEMDataStream = TEMDataStream
+                .map(new TweetToTweetRateFluctuation());
+
+        DataStream<TweetRateFluctuation> modifiedRateFluctuationDataStream = rateFluctuationDataStream
+                .map(new RateFluctuationToTweetRateFluctuation());
+
+        DataStream<TweetRateFluctuation> tweetRateFluctuationDataStream = modifiedTEMDataStream
+                .union(modifiedRateFluctuationDataStream);
+
+
+
+
 
         // -------------------------------------------------------------------------------------------------------------
         // ------------------------------------------------ Out --------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
 
+
 //        TSLADataStream.print();
 //        stockPriceUpDataStream.print();
 //        rateFluctuationDataStream.print();
-        NPDataStream.print();
-        hotTopicDataStream.print();
+//        NPDataStream.print();
+//        hotTopicDataStream.print();
+
+        // modifiedTEMDataStream.print();
+        // tweetRateFluctuationDataStream.print();
+
+        DataStream<TweetRateFluctuation> dataStream = tweetRateFluctuationDataStream
+                .filter(new OriginalTypeTweet());
+
+        dataStream.print();
+
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream
                 .map(new MapFunction<StockPrice, String>() {
@@ -209,6 +239,7 @@ public class StreamingJob {
                         return value.toString();
                     }
                 });
+
 
         stockPriceOutStream.addSink(new FlinkKafkaProducer08<>("localhost:9092", "test", new SimpleStringSchema()));
 

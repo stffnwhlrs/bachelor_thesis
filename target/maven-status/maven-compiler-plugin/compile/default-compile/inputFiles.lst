@@ -9,6 +9,7 @@
 /Users/Steffen/git/bachelor_thesis/src/main/java/app/StreamingJob.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/pojos/StockPriceUp.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/filters/NoRTFilter.java
+/Users/Steffen/git/bachelor_thesis/src/main/java/mediaPresencePattern/MediaPresenceAction.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/translations/TweetTranslation.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/filters/OnlyTEMTweets.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/rateFluctuationPattern/RateFluctuationAction.java
@@ -16,6 +17,8 @@
 /Users/Steffen/git/bachelor_thesis/src/main/java/stockPriceUpPattern/StockPriceUpAction.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/pojos/RateFluctuation.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/rateFluctuationPattern/RateFluctuationCondition.java
+/Users/Steffen/git/bachelor_thesis/src/main/java/mediaPresencePattern/MediaPresenceCondition.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/stockPriceUpPattern/StockPriceUpCondition.java
+/Users/Steffen/git/bachelor_thesis/src/main/java/pojos/HotTopic.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/pojos/StockPrice.java
 /Users/Steffen/git/bachelor_thesis/src/main/java/app/Test.java

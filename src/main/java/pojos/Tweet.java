@@ -1,13 +1,12 @@
 package pojos;
 
 public class Tweet {
-    private long _id;
-    private String _text;
-    private long _userId;
-
-    private String _screenName;
-    private String _name;
-    private String _fullText;
+    protected long _id;
+    protected String _text;
+    protected long _userId;
+    protected String _screenName;
+    protected String _name;
+    protected String _fullText;
 
     public Tweet(){}
 
