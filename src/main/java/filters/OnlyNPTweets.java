@@ -9,6 +9,7 @@ public class OnlyNPTweets implements FilterFunction<Tweet> {
     private static final long THE_ECONOMIST = 5988062L;
     private static final long THE_TELEGRAPH = 16343974L;
     private static final long HANDELSBLATT = 2979574468L;
+    private static final long TEST_ID = 1006501086100942848L;
 
     @Override
     public boolean filter(Tweet tweet) {
@@ -16,6 +17,7 @@ public class OnlyNPTweets implements FilterFunction<Tweet> {
                 tweet.getUserId() == BLOOMBERG ||
                 tweet.getUserId() == THE_ECONOMIST ||
                 tweet.getUserId() == THE_TELEGRAPH ||
-                tweet.getUserId() == HANDELSBLATT;
+                tweet.getUserId() == HANDELSBLATT ||
+                tweet.getUserId() == TEST_ID;
     }
 }

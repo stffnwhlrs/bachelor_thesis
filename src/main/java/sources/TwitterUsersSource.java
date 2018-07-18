@@ -17,6 +17,7 @@ public class TwitterUsersSource implements TwitterSource.EndpointInitializer, Se
     private static final long THE_ECONOMIST = 5988062L;
     private static final long THE_TELEGRAPH = 16343974L;
     private static final long HANDELSBLATT = 2979574468L;
+    private static final long TEST_ID = 1006501086100942848L;
     private static final List<Long> USERS = Arrays.asList(
             TESLA,
             ELON_MUSK,
@@ -24,7 +25,8 @@ public class TwitterUsersSource implements TwitterSource.EndpointInitializer, Se
             BLOOMBERG,
             THE_ECONOMIST,
             THE_TELEGRAPH,
-            HANDELSBLATT);
+            HANDELSBLATT,
+            TEST_ID);
 
     public TwitterUsersSource() {}
 

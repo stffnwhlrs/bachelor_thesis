@@ -19,17 +19,14 @@
 package app;
 
 
-import org.apache.flink.api.common.functions.FilterFunction;
+import mediaPresencePattern.MediaPresenceAction;
+import mediaPresencePattern.MediaPresenceCondition;
 import org.apache.flink.cep.nfa.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.cep.pattern.conditions.SimpleCondition;
-import org.apache.flink.streaming.api.functions.windowing.AllWindowFunction;
 import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
-import org.apache.flink.util.Collector;
-import pojos.RateFluctuation;
-import rateFluctuationPattern.RateFluctuationAction;
+import pojos.*;
 import rateFluctuationPattern.RateFluctuationCondition;
 import stockPriceUpPattern.StockPriceUpAction;
 import stockPriceUpPattern.StockPriceUpCondition;
@@ -45,9 +42,6 @@ import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer08;
-import pojos.StockPrice;
-import pojos.StockPriceUp;
-import pojos.Tweet;
 import sources.SingleStockSource;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -58,6 +52,7 @@ import translations.StockPriceTranslation;
 import translations.TweetTranslation;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -148,7 +143,7 @@ public class StreamingJob {
 
         // ------------------------------------- rate fluctuation pattern ----------------------------------------------
         DataStream<RateFluctuation> preRateFluctuationDataStream = TSLADataStream
-                .windowAll(SlidingProcessingTimeWindows.of(Time.minutes(5),Time.seconds(5)))
+                .windowAll(SlidingProcessingTimeWindows.of(Time.seconds(20),Time.seconds(5)))
                 .apply(new RateFluctuationCondition());
 
 //        DataStream<RateFluctuation> rateFluctuationDataStream = preRateFluctuationDataStream
@@ -161,7 +156,7 @@ public class StreamingJob {
                         if (rateFluctuation.getPercent() < 3) {
                             return false;
                         }
-                        
+
                         for (RateFluctuation e : ctx.getEventsForPattern("start")) {
                             if (rateFluctuation.equals(e)) {
                                 return false;
@@ -181,19 +176,31 @@ public class StreamingJob {
                     }
                 }
         );
+        // ------------------------------------ /rate fluctuation pattern ----------------------------------------------
 
 
-        // ------------------------------------- rate fluctuation pattern ----------------------------------------------
+        // ------------------------------------- media presence pattern -----------------------------------------------
+        Pattern<Tweet, ?> mediaPresencePattern = Pattern.<Tweet>begin("start")
+                .times(3)
+                .where(new MediaPresenceCondition())
+                .within(Time.minutes(5));
 
+        PatternStream<Tweet> mediaPresencePatternStream = CEP.pattern(NPDataStream, mediaPresencePattern);
+
+        DataStream<HotTopic> hotTopicDataStream = mediaPresencePatternStream.select(new MediaPresenceAction());
+
+        // ------------------------------------ /media presence pattern -----------------------------------------------
 
         // -------------------------------------------------------------------------------------------------------------
         // ------------------------------------------------ Out --------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
-        TSLADataStream.print();
-        stockPriceUpDataStream.print();
-        rateFluctuationDataStream.print();
 
+//        TSLADataStream.print();
+//        stockPriceUpDataStream.print();
+//        rateFluctuationDataStream.print();
+        NPDataStream.print();
+        hotTopicDataStream.print();
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream
                 .map(new MapFunction<StockPrice, String>() {
