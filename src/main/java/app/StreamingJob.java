@@ -19,6 +19,20 @@
 package app;
 
 
+import org.apache.flink.api.common.functions.FilterFunction;
+import org.apache.flink.cep.nfa.AfterMatchSkipStrategy;
+import org.apache.flink.cep.pattern.conditions.IterativeCondition;
+import org.apache.flink.cep.pattern.conditions.SimpleCondition;
+import org.apache.flink.streaming.api.functions.windowing.AllWindowFunction;
+import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
+import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
+import org.apache.flink.util.Collector;
+import pojos.RateFluctuation;
+import rateFluctuationPattern.RateFluctuationAction;
+import rateFluctuationPattern.RateFluctuationCondition;
+import stockPriceUpPattern.StockPriceUpAction;
+import stockPriceUpPattern.StockPriceUpCondition;
 import constraints.StockPriceConstraint;
 import constraints.TweetConstraint;
 import filters.OnlyNPTweets;
@@ -30,7 +44,6 @@ import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
-import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer08;
 import pojos.StockPrice;
 import pojos.StockPriceUp;
@@ -118,37 +131,59 @@ public class StreamingJob {
         // ---------------------------------------------- Level 3 ------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
-        Pattern<StockPrice, ?> pattern = Pattern.<StockPrice>begin("start")
-                .timesOrMore(5)
+        // ------------------------------------- stock price up pattern ------------------------------------------------
+        // no double use of events
+        AfterMatchSkipStrategy stockPriceUpSkipStrategy = AfterMatchSkipStrategy.skipPastLastEvent();
+
+        Pattern<StockPrice, ?> stockPriceUpPattern = Pattern.<StockPrice>begin("start", stockPriceUpSkipStrategy)
+                .times(5)
                 .consecutive()
-                .where(new IterativeCondition<StockPrice>() {
+                .where(new StockPriceUpCondition("start"));
+
+        PatternStream<StockPrice> stockPriceUpPatternStream = CEP.pattern(TSLADataStream, stockPriceUpPattern);
+
+        DataStream<StockPriceUp> stockPriceUpDataStream = stockPriceUpPatternStream.select(new StockPriceUpAction());
+        // ------------------------------------- /stock price up pattern -----------------------------------------------
+
+
+        // ------------------------------------- rate fluctuation pattern ----------------------------------------------
+        DataStream<RateFluctuation> preRateFluctuationDataStream = TSLADataStream
+                .windowAll(SlidingProcessingTimeWindows.of(Time.minutes(5),Time.seconds(5)))
+                .apply(new RateFluctuationCondition());
+
+//        DataStream<RateFluctuation> rateFluctuationDataStream = preRateFluctuationDataStream
+//                .filter(new RateFluctuationAction());
+
+        Pattern<RateFluctuation, ?> rateFluctuationPattern = Pattern.<RateFluctuation>begin("start")
+                .where(new IterativeCondition<RateFluctuation>() {
                     @Override
-                    public boolean filter(StockPrice stockPrice, Context<StockPrice> ctx) throws Exception {
-                        boolean result = true;
-                        for (StockPrice e : ctx.getEventsForPattern("start")) {
-                            if (e.getPrice() > stockPrice.getPrice()) {
-                                result = false;
+                    public boolean filter(RateFluctuation rateFluctuation, Context<RateFluctuation> ctx) throws Exception {
+                        if (rateFluctuation.getPercent() < 3) {
+                            return false;
+                        }
+                        
+                        for (RateFluctuation e : ctx.getEventsForPattern("start")) {
+                            if (rateFluctuation.equals(e)) {
+                                return false;
                             }
                         }
-                        return result;
+                        return true;
                     }
                 });
 
-        PatternStream<StockPrice> patternStream = CEP.pattern(TSLADataStream, pattern);
+        PatternStream<RateFluctuation> rateFluctuationPatternStream = CEP.pattern(preRateFluctuationDataStream, rateFluctuationPattern);
 
-        DataStream<StockPriceUp> result = patternStream.select(
-                new PatternSelectFunction<StockPrice, StockPriceUp>() {
+        DataStream<RateFluctuation> rateFluctuationDataStream = rateFluctuationPatternStream.select(
+                new PatternSelectFunction<RateFluctuation, RateFluctuation>() {
                     @Override
-                    public StockPriceUp select(Map<String, List<StockPrice>> pattern) throws Exception {
-                        List<StockPrice> list = pattern.get("start");
-                        String symbol = list.get(0).getSymbol();
-                        double startPrice = list.get(0).getPrice();
-                        double endPrice = list.get(list.size()-1).getPrice();
-
-                        return new StockPriceUp(symbol, startPrice, endPrice, list);
+                    public RateFluctuation select(Map<String, List<RateFluctuation>> pattern) throws Exception {
+                        return pattern.get("start").get(0);
                     }
                 }
         );
+
+
+        // ------------------------------------- rate fluctuation pattern ----------------------------------------------
 
 
         // -------------------------------------------------------------------------------------------------------------
@@ -156,7 +191,9 @@ public class StreamingJob {
         // -------------------------------------------------------------------------------------------------------------
 
         TSLADataStream.print();
-        result.print();
+        stockPriceUpDataStream.print();
+        rateFluctuationDataStream.print();
+
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream
                 .map(new MapFunction<StockPrice, String>() {

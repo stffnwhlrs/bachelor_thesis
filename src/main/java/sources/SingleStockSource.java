@@ -22,14 +22,14 @@ public class SingleStockSource implements SourceFunction<String> {
 
     @Override
     public void run(SourceContext<String> sourceContext) throws InterruptedException {
-        while (_isRunning && _count < 200) {
+        while (_isRunning && _count < 2000) {
             _price = _price +  _random.nextGaussian() * _sigma;
             _price = _price * 100;
             _price = Math.round(_price);
             _price = _price / 100;
             String result = _symbol + ", " + _price;
             sourceContext.collect(result);
-            Thread.sleep(_random.nextInt(200));
+            Thread.sleep(_random.nextInt(1000));
             _count ++;
         }
     }

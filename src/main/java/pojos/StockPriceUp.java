@@ -49,14 +49,15 @@ public class StockPriceUp {
             return other.canEquals(this) &&
                     Objects.equals(this._symbol, other._symbol) &&
                     this._startPrice == other._startPrice &&
-                    this._endPrice == other. _endPrice;
+                    this._endPrice == other. _endPrice &&
+                    Objects.equals(this._stockPrices, other._stockPrices);
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._symbol, this._startPrice, this._endPrice);
+        return Objects.hash(this._symbol, this._startPrice, this._endPrice, this._stockPrices);
     }
 
     @Override
