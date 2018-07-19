@@ -19,15 +19,22 @@
 package app;
 
 
+import com.aylien.textapi.TextAPIClient;
+import com.aylien.textapi.parameters.SentimentParams;
+import com.aylien.textapi.responses.Sentiment;
+import filters.NoRTFilter;
 import impactTweetCMPattern.ImpactTweetCMAction;
 import impactTweetCMPattern.ImpactTweetCMCondition1;
 import impactTweetCMPattern.ImpactTweetCMCondition2;
 import mappers.RateFluctuationToTweetRateFluctuation;
+import mappers.SentimentEnrichment;
 import mappers.TweetToTweetRateFluctuation;
 import mediaPresencePattern.MediaPresenceAction;
 import mediaPresencePattern.MediaPresenceCondition;
+import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.cep.nfa.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
+import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import pojos.*;
@@ -125,6 +132,8 @@ public class StreamingJob {
         // filters tweets from Tesla and Elon Musk
         DataStream<Tweet> TEMDataStream = tweetUsersDataStream.filter(new OnlyTEMTweets());
 
+        DataStream<Tweet> noRTDataStream = tweetTermsDataStream.filter(new NoRTFilter());
+
         // -------------------------------------------------------------------------------------------------------------
         // ---------------------------------------------- Level 2 ------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
@@ -194,6 +203,16 @@ public class StreamingJob {
 
         // ------------------------------------ /media presence pattern ------------------------------------------------
 
+
+        // ----------------------------------------- tweet sentiment ---------------------------------------------------
+//        DataStream<TweetSentiment> tweetSentimentDataStream = noRTDataStream.map(new SentimentEnrichment());
+
+
+
+
+        // ----------------------------------------- /tweet sentiment --------------------------------------------------
+
+
         // -------------------------------------------------------------------------------------------------------------
         // ---------------------------------------------- Level 4 ------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
@@ -226,20 +245,8 @@ public class StreamingJob {
         // ------------------------------------------------ Out --------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
-
-
-//        TSLADataStream.print();
-//        stockPriceUpDataStream.print();
-//        rateFluctuationDataStream.print();
-//        NPDataStream.print();
-//        hotTopicDataStream.print();
-
-        modifiedTEMDataStream.print();
-        modifiedRateFluctuationDataStream.print();
-
-        impactTweetCMDataStream.print();
-
-
+        tweetTermsDataStream.print();
+//        tweetSentimentDataStream.print();
 
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream

@@ -84,7 +84,7 @@ public class Tweet {
 
     @Override
     public String toString() {
-        return "tweet ID: " + this._id + ", user: " + this._name + ", text: " + this._text;
+        return "tweet ID: " + this._id + ", screen name: " + this._screenName + ", text: " + this._text;
     }
 
     public boolean canEquals(Object obj){

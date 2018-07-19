@@ -1,26 +1,13 @@
 package app;
 
-import pojos.RateFluctuation;
-import pojos.Tweet;
-import pojos.TweetRateFluctuation;
+import java.io.Serializable;
 
-public class Test {
-    public static void main(String[] args) {
-//        RateFluctuation r1 = new RateFluctuation("TSLA", 297.57, 319.36, 6.82);
-//        RateFluctuation r2 = new RateFluctuation("TSLA", 297.57, 319.36, 6.82);
+public class Test implements Serializable {
+    // Aylien Credentials
+    private final static String APP_ID = "efe1eeb5";
+    private final static String KEY = "6af506e26a54fb3fd2e6cbcd5e0a8895";
 
-//        String s1 = "Tesla";
-//        String s2 = "tesla";
-//        String s3 = "dsadsTesladas";
-//
-//        System.out.println(s1.contains("tesla"));
-//        System.out.println(s2.contains("Tesla"));
-//        System.out.println(s3.contains("Tesla"));
-
-        Tweet tweet = new Tweet();
-        TweetRateFluctuation tweetRateFluctuation = new TweetRateFluctuation(tweet);
-
-        System.out.println(tweetRateFluctuation.getOriginalType().equals("Tweet"));
+    public static void main(String[] args) throws Exception {
 
     }
 }
