@@ -19,12 +19,13 @@
 package app;
 
 
-import filters.OriginalTypeTweet;
+import impactTweetCMPattern.ImpactTweetCMAction;
+import impactTweetCMPattern.ImpactTweetCMCondition1;
+import impactTweetCMPattern.ImpactTweetCMCondition2;
 import mappers.RateFluctuationToTweetRateFluctuation;
 import mappers.TweetToTweetRateFluctuation;
 import mediaPresencePattern.MediaPresenceAction;
 import mediaPresencePattern.MediaPresenceCondition;
-import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.cep.nfa.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
@@ -197,7 +198,7 @@ public class StreamingJob {
         // ---------------------------------------------- Level 4 ------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
-        // ------------------------------------ tweet impact on capital markets ------------------------------------------------
+        // ------------------------------------ tweet impact on capital markets ----------------------------------------
         DataStream<TweetRateFluctuation> modifiedTEMDataStream = TEMDataStream
                 .map(new TweetToTweetRateFluctuation());
 
@@ -207,8 +208,18 @@ public class StreamingJob {
         DataStream<TweetRateFluctuation> tweetRateFluctuationDataStream = modifiedTEMDataStream
                 .union(modifiedRateFluctuationDataStream);
 
+        Pattern<TweetRateFluctuation, ?> impactTweetCMPattern = Pattern.<TweetRateFluctuation>begin("Tweet")
+                .where(new ImpactTweetCMCondition1())
+                .followedBy("RateFluctuation")
+                .where(new ImpactTweetCMCondition2())
+                .within(Time.minutes(15));
 
+        PatternStream<TweetRateFluctuation> impactTweetCMPatternStream = CEP.pattern(
+                tweetRateFluctuationDataStream,
+                impactTweetCMPattern);
 
+        DataStream<ImpactTweet> impactTweetCMDataStream = impactTweetCMPatternStream.select(new ImpactTweetCMAction());
+        // ----------------------------------- /tweet impact on capital markets ----------------------------------------
 
 
         // -------------------------------------------------------------------------------------------------------------
@@ -223,13 +234,12 @@ public class StreamingJob {
 //        NPDataStream.print();
 //        hotTopicDataStream.print();
 
-        // modifiedTEMDataStream.print();
-        // tweetRateFluctuationDataStream.print();
+        modifiedTEMDataStream.print();
+        modifiedRateFluctuationDataStream.print();
 
-        DataStream<TweetRateFluctuation> dataStream = tweetRateFluctuationDataStream
-                .filter(new OriginalTypeTweet());
+        impactTweetCMDataStream.print();
 
-        dataStream.print();
+
 
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream
