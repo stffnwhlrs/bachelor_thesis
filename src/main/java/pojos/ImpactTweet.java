@@ -3,47 +3,47 @@ package pojos;
 import java.util.Objects;
 
 public  abstract class ImpactTweet {
-    protected long _id;
-    protected String _name;
-    protected String _text;
+    public long id;
+    public String name;
+    public String text;
 
     public ImpactTweet () {}
 
     public ImpactTweet (long id, String screenName, String text) {
-        this._id = id;
-        this._name = screenName;
-        this._text = text;
+        this.id = id;
+        this.name = screenName;
+        this.text = text;
     }
 
     public long getId() {
-        return _id;
+        return id;
     }
 
     public void setId(long id) {
-        this._id = id;
+        this.id = id;
     }
 
     public String getScreenName() {
-        return _name;
+        return name;
     }
 
     public void setScreenName(String name) {
-        this._name = name;
+        this.name = name;
     }
 
     public String getText() {
-        return _text;
+        return text;
     }
 
     public void setText(String text) {
-        this._text = text;
+        this.text = text;
     }
 
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof ImpactTweet) {
             ImpactTweet other = (ImpactTweet) obj;
-            return other.canEquals(this) && this._id == other._id;
+            return other.canEquals(this) && this.id == other.id;
         } else {
             return false;
         }
@@ -51,12 +51,12 @@ public  abstract class ImpactTweet {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._id);
+        return Objects.hash(this.id);
     }
 
     @Override
     public String toString() {
-        return "tweet ID: " + this._id + ", user: " + this._name + ", text: " + this._text;
+        return "tweet ID: " + this.id + ", user: " + this.name + ", text: " + this.text;
     }
 
     public boolean canEquals(Object obj) {

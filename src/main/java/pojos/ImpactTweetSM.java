@@ -1,41 +1,41 @@
 package pojos;
 
 public class ImpactTweetSM extends ImpactTweet{
-    protected int _count;
-    protected double _ratioPositives;
-    protected double _ratioNegatives;
+    public int count;
+    public double ratioPositives;
+    public double ratioNegatives;
 
     public ImpactTweetSM() {}
 
     public ImpactTweetSM (long id, String name, String text, int count, double ratioPositives, double ratioNegatives) {
             super(id, name, text);
-            this._count = count;
-            this._ratioPositives = ratioPositives;
-            this._ratioNegatives = ratioNegatives;
+            this.count = count;
+            this.ratioPositives = ratioPositives;
+            this.ratioNegatives = ratioNegatives;
     }
 
     public int getCount() {
-        return _count;
+        return count;
     }
 
     public void setCount(int count) {
-        this._count = count;
+        this.count = count;
     }
 
     public double getRatioPositives() {
-        return _ratioPositives;
+        return ratioPositives;
     }
 
     public void setRatioPositives(double ratioPositives) {
-        this._ratioPositives = ratioPositives;
+        this.ratioPositives = ratioPositives;
     }
 
     public double getRatioNegatives() {
-        return _ratioNegatives;
+        return ratioNegatives;
     }
 
     public void setRatioNegatives(double _ratioNegatives) {
-        this._ratioNegatives = _ratioNegatives;
+        this.ratioNegatives = _ratioNegatives;
     }
 
     @Override
@@ -51,9 +51,9 @@ public class ImpactTweetSM extends ImpactTweet{
     @Override
     public String toString() {
         return "ImpactTweetSM: " + super.toString()
-                + ", count: " + this._count
-                + ", ratio positives: " + this._ratioPositives
-                + ", ratio negatives: " + this._ratioNegatives;
+                + ", count: " + this.count
+                + ", ratio positives: " + this.ratioPositives
+                + ", ratio negatives: " + this.ratioNegatives;
     }
 
     @Override

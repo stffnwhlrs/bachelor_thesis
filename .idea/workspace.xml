@@ -7,23 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b30e963-3d69-4d82-b390-9f9ed5bb00eb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMCondition1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMCondition2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mappers/SentimentAGGToTweetSentimentAGG.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mappers/TweetToTweetSentimentAGG.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetSM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/bachelor_thesis_jar/bachelor_thesis.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/bachelor_thesis_jar/bachelor_thesis.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetCM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetCM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/StreamingJob$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/StreamingJob$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetSM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetSM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/StreamingJob$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/StreamingJob.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/ImpactTweetCM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pojos/ImpactTweetCM.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +34,8 @@
       <file leaf-file-name="StreamingJob.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/StreamingJob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="279" selection-end-column="8" />
+            <state relative-caret-position="187">
+              <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#11626#11648#0" expanded="true" />
@@ -52,25 +45,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImpactTweetSMCondition1.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMCondition1.java">
+      <file leaf-file-name="ImpactTweet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="115">
-              <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImpactTweetSMAction.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMAction.java">
+      <file leaf-file-name="ImpactTweetCM.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetCM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="69">
+              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImpactTweetSM.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetSM.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImpactTweetStore.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1124#1125#0" expanded="true" />
+                <element signature="e#1208#1209#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,7 +129,6 @@
         <option value="$PROJECT_DIR$/src/main/java/mappers/RateFluctuationToTweetRateFluctuation.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctuation.java" />
         <option value="$PROJECT_DIR$/src/main/java/filters/OriginalTypeTweet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pojos/ImpactTweet.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetCMPattern/ImpactTweetCondition1.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetCMPattern/ImpactTweetCondition2.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetCMPattern/ImpactTweetCMAction.java" />
@@ -136,19 +144,20 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/app/tweetSentimentsAGG/sentimentAGG.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojos/SentimentAGG.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/tweetSentimentsAGG/SentimentsAGG.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojos/TweetSentimentsAGG.java" />
         <option value="$PROJECT_DIR$/src/main/java/mappers/SentimentAGGToTweetSentimentAGG.java" />
         <option value="$PROJECT_DIR$/src/main/java/mappers/TweetToTweetSentimentAGG.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMCondition1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetCM.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMCondition2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/ImpactTweet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetCM.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetSM.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" />
       </list>
     </option>
   </component>
@@ -176,7 +185,7 @@
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="86" />
     <option name="y" value="1080" />
-    <option name="width" value="1136" />
+    <option name="width" value="101" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -386,7 +395,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147994000" />
+    <option name="totallyTimeSpent" value="155520000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,7 +407,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="86" y="1080" width="1140" height="1050" extended-state="6" />
+    <frame x="86" y="1080" width="1154" height="1050" extended-state="6" />
     <layout>
       <window_info anchor="right" id="PlantUML" order="9" />
       <window_info anchor="right" id="Palette" order="3" />
@@ -410,14 +419,14 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30471203" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30471203" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4984375" visible="true" weight="0.19649123" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4984375" visible="true" weight="0.19410746" />
       <window_info anchor="right" id="Database" order="7" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32984293" />
       <window_info id="Structure" order="1" sideWeight="0.5015625" side_tool="true" weight="0.19649123" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -516,6 +525,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -676,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sources/TwitterTermsSource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
@@ -798,44 +803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetSM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="54" selection-start-line="54" selection-end-line="55" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="48" column="41" lean-forward="true" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
-          <folding>
-            <element signature="e#577#578#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#1124#1125#0" expanded="true" />
-            <element signature="e#1176#1177#0" expanded="true" />
-            <element signature="e#1012#1013#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetCM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
@@ -843,15 +810,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/StreamingJob.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="279" selection-end-column="8" />
+        <state relative-caret-position="345">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11626#11648#0" expanded="true" />
-            <element signature="e#13367#13386#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
@@ -865,12 +837,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/StreamingJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state relative-caret-position="187">
+          <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#11626#11648#0" expanded="true" />
+            <element signature="e#13367#13386#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetCM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetSM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+          <folding>
+            <element signature="e#1124#1125#0" expanded="true" />
+            <element signature="e#1208#1209#0" expanded="true" />
           </folding>
         </state>
       </provider>

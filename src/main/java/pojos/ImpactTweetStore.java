@@ -3,7 +3,7 @@ package pojos;
 import java.util.Objects;
 
 public class ImpactTweetStore extends ImpactTweetSM {
-    private double _percent;
+    public double percent;
 
     public ImpactTweetStore() {}
 
@@ -15,15 +15,15 @@ public class ImpactTweetStore extends ImpactTweetSM {
                             double ratioNegatives,
                             double percent) {
         super(id,name,text,count,ratioPositives,ratioNegatives);
-        this._percent = percent;
+        this.percent = percent;
     }
 
     public double getPercent() {
-        return _percent;
+        return percent;
     }
 
     public void setPercent(double percent) {
-        this._percent = percent;
+        this.percent = percent;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ImpactTweetStore extends ImpactTweetSM {
             ImpactTweetStore other = (ImpactTweetStore) obj;
             return other.canEquals(this) &&
                     super.equals(other) &&
-                    this._percent == other._percent;
+                    this.percent == other.percent;
         } else {
             return false;
         }
@@ -40,19 +40,19 @@ public class ImpactTweetStore extends ImpactTweetSM {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(),Double.hashCode(this._percent));
+        return Objects.hash(super.hashCode(),Double.hashCode(this.percent));
     }
 
     @Override
     public String toString() {
         return "ImpactTweetSource: "
-                + "Tweet ID: " + this._id
-                + ", screen name: " + this._name
-                + ", text: " + this._text
-                + ", count: " + this._count
-                + ", ratio positives: " + this._ratioPositives
-                + ", ratio negatives: " + this._ratioNegatives
-                + ", percent: " + this._percent;
+                + "Tweet ID: " + this.id
+                + ", screen name: " + this.name
+                + ", text: " + this.text
+                + ", count: " + this.count
+                + ", ratio positives: " + this.ratioPositives
+                + ", ratio negatives: " + this.ratioNegatives
+                + ", percent: " + this.percent;
 
     }
 

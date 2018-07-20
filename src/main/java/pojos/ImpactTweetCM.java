@@ -1,20 +1,20 @@
 package pojos;
 
 public class ImpactTweetCM extends ImpactTweet {
-    private double _percent;
+    public double percent;
 
     public ImpactTweetCM() {}
     public ImpactTweetCM (long id, String name, String text, double percent) {
         super(id, name, text);
-        this._percent = percent;
+        this.percent = percent;
     }
 
     public double getPercent() {
-        return _percent;
+        return percent;
     }
 
     public void setPercent(double percent) {
-        this._percent = percent;
+        this.percent = percent;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ImpactTweetCM extends ImpactTweet {
 
     @Override
     public String toString() {
-        return "ImpactTweetCM: " + super.toString() + ", percent: " + this._percent;
+        return "ImpactTweetCM: " + super.toString() + ", percent: " + this.percent;
     }
 
     @Override

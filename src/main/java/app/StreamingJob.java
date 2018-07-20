@@ -25,7 +25,8 @@ import impactTweetSMPattern.ImpactTweetSMCondition1;
 import impactTweetSMPattern.ImpactTweetSMCondition2;
 import mappers.SentimentAGGToTweetSentimentAGG;
 import mappers.TweetToTweetSentimentAGG;
-import org.apache.flink.cep.pattern.conditions.SimpleCondition;
+import org.apache.flink.api.java.tuple.Tuple;
+import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
 import pojos.SentimentAGG;
 import filters.NoRTFilter;
 import impactTweetCMPattern.ImpactTweetCMAction;
@@ -38,7 +39,6 @@ import mediaPresencePattern.MediaPresenceAction;
 import mediaPresencePattern.MediaPresenceCondition;
 import org.apache.flink.cep.nfa.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
-import org.apache.flink.streaming.api.functions.windowing.AllWindowFunction;
 import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
@@ -273,6 +273,42 @@ public class StreamingJob {
 
         // ---------------------------------- /tweet impact on social media --------------------------------------------
 
+        // -------------------------------------------------------------------------------------------------------------
+        // ---------------------------------------------- Level 5 ------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------------------
+            DataStream<ImpactTweet> impactTweetDataStream = impactTweetCMDataStream
+                    .union(impactTweetSMDataStream);
+
+            DataStream<ImpactTweetStore> impactTweetStoreDataStream = impactTweetDataStream
+                    .keyBy("id")
+                    .window(SlidingProcessingTimeWindows.of(Time.minutes(5), Time.seconds(10)))
+                    .apply(new WindowFunction<ImpactTweet, ImpactTweetStore, Tuple, TimeWindow>() {
+                        @Override
+                        public void apply(Tuple tuple, TimeWindow window, Iterable<ImpactTweet> impactTweets, Collector<ImpactTweetStore> out) throws Exception {
+                            ImpactTweetSM impactTweetSM = null;
+                            ImpactTweetCM impactTweetCM = null;
+
+                            for (ImpactTweet e : impactTweets) {
+                                if (e instanceof ImpactTweetSM) {
+                                    impactTweetSM = (ImpactTweetSM) e;
+                                }
+                                if (e instanceof ImpactTweetCM) {
+                                    impactTweetCM = (ImpactTweetCM) e;
+                                }
+                            }
+                            if(impactTweetSM != null && impactTweetCM != null) {
+                                out.collect(new ImpactTweetStore(
+                                        impactTweetSM.id,
+                                        impactTweetSM.getScreenName(),
+                                        impactTweetSM.getText(),
+                                        impactTweetSM.getCount(),
+                                        impactTweetSM.getRatioPositives(),
+                                        impactTweetSM.getRatioNegatives(),
+                                        impactTweetCM.getPercent()));
+                            }
+                        }
+                    });
+
 
         // -------------------------------------------------------------------------------------------------------------
         // ------------------------------------------------ Out --------------------------------------------------------
@@ -280,6 +316,7 @@ public class StreamingJob {
 
         impactTweetCMDataStream.print();
         impactTweetSMDataStream.print();
+        impactTweetStoreDataStream.print();
 
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream
