@@ -20,6 +20,12 @@ package app;
 
 
 import app.tweetSentimentsAGG.SentimentsAGG;
+import impactTweetSMPattern.ImpactTweetSMAction;
+import impactTweetSMPattern.ImpactTweetSMCondition1;
+import impactTweetSMPattern.ImpactTweetSMCondition2;
+import mappers.SentimentAGGToTweetSentimentAGG;
+import mappers.TweetToTweetSentimentAGG;
+import org.apache.flink.cep.pattern.conditions.SimpleCondition;
 import pojos.SentimentAGG;
 import filters.NoRTFilter;
 import impactTweetCMPattern.ImpactTweetCMAction;
@@ -213,11 +219,6 @@ public class StreamingJob {
         DataStream<SentimentAGG> sentimentAGGDataStream = tweetSentimentDataStream
                 .windowAll(TumblingProcessingTimeWindows.of(Time.minutes(1)))
                 .apply(new SentimentsAGG());
-
-
-
-
-
         // ----------------------------------------- /tweet sentiment --------------------------------------------------
 
 
@@ -226,13 +227,13 @@ public class StreamingJob {
         // -------------------------------------------------------------------------------------------------------------
 
         // ------------------------------------ tweet impact on capital markets ----------------------------------------
-        DataStream<TweetRateFluctuation> modifiedTEMDataStream = TEMDataStream
+        DataStream<TweetRateFluctuation> modifiedTEMCMDataStream = TEMDataStream
                 .map(new TweetToTweetRateFluctuation());
 
         DataStream<TweetRateFluctuation> modifiedRateFluctuationDataStream = rateFluctuationDataStream
                 .map(new RateFluctuationToTweetRateFluctuation());
 
-        DataStream<TweetRateFluctuation> tweetRateFluctuationDataStream = modifiedTEMDataStream
+        DataStream<TweetRateFluctuation> tweetRateFluctuationDataStream = modifiedTEMCMDataStream
                 .union(modifiedRateFluctuationDataStream);
 
         Pattern<TweetRateFluctuation, ?> impactTweetCMPattern = Pattern.<TweetRateFluctuation>begin("Tweet")
@@ -248,13 +249,37 @@ public class StreamingJob {
         DataStream<ImpactTweet> impactTweetCMDataStream = impactTweetCMPatternStream.select(new ImpactTweetCMAction());
         // ----------------------------------- /tweet impact on capital markets ----------------------------------------
 
+        // ----------------------------------- tweet impact on social media --------------------------------------------
+        DataStream<TweetSentimentAGG>  modifiedTEMSMDataStream= TEMDataStream
+                .map(new TweetToTweetSentimentAGG());
+
+        DataStream<TweetSentimentAGG> modifiedSentimentAGGDataStream = sentimentAGGDataStream
+                .map(new SentimentAGGToTweetSentimentAGG());
+
+        DataStream<TweetSentimentAGG> tweetSentimentAGGDataStream = modifiedTEMSMDataStream
+                .union(modifiedSentimentAGGDataStream);
+
+        Pattern<TweetSentimentAGG, ?> tweetImpactSMPattern = Pattern.<TweetSentimentAGG>begin("Tweet")
+                .where(new ImpactTweetSMCondition1())
+                .followedBy("SentimentAGG")
+                .where(new ImpactTweetSMCondition2())
+                .within(Time.minutes(15));
+
+        PatternStream<TweetSentimentAGG> tweetImpactSMPatternStream = CEP.pattern(
+                tweetSentimentAGGDataStream, tweetImpactSMPattern);
+
+        DataStream<ImpactTweet> impactTweetSMDataStream = tweetImpactSMPatternStream.select(new ImpactTweetSMAction());
+
+
+        // ---------------------------------- /tweet impact on social media --------------------------------------------
+
 
         // -------------------------------------------------------------------------------------------------------------
         // ------------------------------------------------ Out --------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
-        tweetSentimentDataStream.print();
-        sentimentAGGDataStream.print();
+        impactTweetCMDataStream.print();
+        impactTweetSMDataStream.print();
 
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream

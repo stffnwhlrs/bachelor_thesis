@@ -6,7 +6,6 @@ public class ImpactTweetCM extends ImpactTweet {
     public ImpactTweetCM() {}
     public ImpactTweetCM (long id, String name, String text, double percent) {
         super(id, name, text);
-
         this._percent = percent;
     }
 
