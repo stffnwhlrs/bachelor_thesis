@@ -19,24 +19,25 @@
 package app;
 
 
-import com.aylien.textapi.TextAPIClient;
-import com.aylien.textapi.parameters.SentimentParams;
-import com.aylien.textapi.responses.Sentiment;
+import app.tweetSentimentsAGG.SentimentsAGG;
+import pojos.SentimentAGG;
 import filters.NoRTFilter;
 import impactTweetCMPattern.ImpactTweetCMAction;
 import impactTweetCMPattern.ImpactTweetCMCondition1;
 import impactTweetCMPattern.ImpactTweetCMCondition2;
 import mappers.RateFluctuationToTweetRateFluctuation;
-import mappers.SentimentEnrichment;
+import app.tweetSentimentsAGG.SentimentEnrichment;
 import mappers.TweetToTweetRateFluctuation;
 import mediaPresencePattern.MediaPresenceAction;
 import mediaPresencePattern.MediaPresenceCondition;
-import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.cep.nfa.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
-import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.functions.windowing.AllWindowFunction;
 import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
+import org.apache.flink.util.Collector;
 import pojos.*;
 import rateFluctuationPattern.RateFluctuationCondition;
 import stockPriceUpPattern.StockPriceUpAction;
@@ -205,7 +206,14 @@ public class StreamingJob {
 
 
         // ----------------------------------------- tweet sentiment ---------------------------------------------------
-//        DataStream<TweetSentiment> tweetSentimentDataStream = noRTDataStream.map(new SentimentEnrichment());
+        //content enrichment
+        DataStream<TweetSentiment> tweetSentimentDataStream = noRTDataStream.map(new SentimentEnrichment());
+
+        //aggregation
+        DataStream<SentimentAGG> sentimentAGGDataStream = tweetSentimentDataStream
+                .windowAll(TumblingProcessingTimeWindows.of(Time.minutes(1)))
+                .apply(new SentimentsAGG());
+
 
 
 
@@ -245,8 +253,8 @@ public class StreamingJob {
         // ------------------------------------------------ Out --------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
-        tweetTermsDataStream.print();
-//        tweetSentimentDataStream.print();
+        tweetSentimentDataStream.print();
+        sentimentAGGDataStream.print();
 
 
         DataStream<String> stockPriceOutStream = stockPriceDataStream

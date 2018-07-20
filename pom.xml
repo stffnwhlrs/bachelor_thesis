@@ -58,13 +58,13 @@ under the License.
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-java</artifactId>
 			<version>${flink.version}</version>
-			<scope>provided</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
 			<version>${flink.version}</version>
-			<scope>provided</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.flink</groupId>
@@ -109,6 +109,11 @@ under the License.
             <artifactId>client</artifactId>
             <version>0.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
 	</dependencies>
     <!-- START DRITTER VERSUCH -->
     <!--<build>-->
@@ -141,6 +146,15 @@ under the License.
     <build>
         <plugins>
             <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+            </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.0.0</version>
@@ -151,15 +165,15 @@ under the License.
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
                             <artifactSet>
-                                <includes>
-                                <include>org/apache/flink/twitter/shaded/com/google/common/**</include>
-                                </includes>
+                                <!--<includes>-->
+                                <!--<include>org/apache/flink/twitter/shaded/com/google/common/**</include>-->
+                                <!--</includes>-->
                                 <excludes>
                                     <exclude>com.google.code.findbugs:jsr305</exclude>
                                     <exclude>org.slf4j:*</exclude>
                                     <exclude>log4j:*</exclude>
-                                    <exlude>org/apache/flink/twitter/shaded/com/google/common/**</exlude>
                                 </excludes>
                             </artifactSet>
                             <filters>
