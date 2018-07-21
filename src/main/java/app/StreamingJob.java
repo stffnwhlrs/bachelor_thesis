@@ -314,6 +314,7 @@ public class StreamingJob {
         // ------------------------------------------------ Out --------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
+        TEMDataStream.print();
         impactTweetCMDataStream.print();
         impactTweetSMDataStream.print();
         impactTweetStoreDataStream.print();
@@ -328,7 +329,7 @@ public class StreamingJob {
                 });
 
 
-        stockPriceOutStream.addSink(new FlinkKafkaProducer08<>("localhost:9092", "test", new SimpleStringSchema()));
+//        stockPriceOutStream.addSink(new FlinkKafkaProducer08<>("localhost:9092", "test", new SimpleStringSchema()));
 
 		env.execute("StreamingJob");
 	}

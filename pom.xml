@@ -167,9 +167,9 @@ under the License.
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <artifactSet>
-                                <!--<includes>-->
-                                <!--<include>org/apache/flink/twitter/shaded/com/google/common/**</include>-->
-                                <!--</includes>-->
+                                <includes>
+                                <include>org/apache/flink/twitter/shaded/com/google/common/**</include>
+                                </includes>
                                 <excludes>
                                     <exclude>com.google.code.findbugs:jsr305</exclude>
                                     <exclude>org.slf4j:*</exclude>
@@ -182,7 +182,6 @@ under the License.
                                     Otherwise, this might cause SecurityExceptions when using the JAR. -->
                                     <artifact>*:*</artifact>
                                     <excludes>
-                                        <exclude>org/apache/flink/twitter/shaded/com/google/common/**</exclude>
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
