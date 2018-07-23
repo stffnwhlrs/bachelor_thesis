@@ -214,17 +214,17 @@ public class StreamingJob {
         // ----------------------------------------- tweet sentiment ---------------------------------------------------
 //        TODO Richtiges Sentiment Enrichement einsetzen
         //content enrichment
-//        DataStream<TweetSentiment> tweetSentimentDataStream = noRTDataStream.map(new SentimentEnrichment());
-        DataStream<TweetSentiment> tweetSentimentDataStream = noRTDataStream.map(
-                new MapFunction<Tweet, TweetSentiment>() {
-                    @Override
-                    public TweetSentiment map(Tweet value) {
-                        return new TweetSentiment(value, "positive", 99.00);
-                    }
-                }
-        );
-
-        //aggregation
+        DataStream<TweetSentiment> tweetSentimentDataStream = noRTDataStream.map(new SentimentEnrichment());
+//        DataStream<TweetSentiment> tweetSentimentDataStream = noRTDataStream.map(
+//                new MapFunction<Tweet, TweetSentiment>() {
+//                    @Override
+//                    public TweetSentiment map(Tweet value) {
+//                        return new TweetSentiment(value, "positive", 99.00);
+//                    }
+//                }
+//        );
+//
+//        //aggregation
         DataStream<SentimentAGG> sentimentAGGDataStream = tweetSentimentDataStream
                 .windowAll(TumblingProcessingTimeWindows.of(Time.minutes(1)))
                 .apply(new SentimentsAGG());
@@ -323,12 +323,6 @@ public class StreamingJob {
         // ------------------------------------------------ Out --------------------------------------------------------
         // -------------------------------------------------------------------------------------------------------------
 
-//        TEMDataStream.print();
-//        impactTweetCMDataStream.print();
-//        impactTweetSMDataStream.print();
-//        impactTweetStoreDataStream.print();
-
-
         DataStream<String> stockPriceOutStream = stockPriceDataStream
                 .map(new MapFunction<StockPrice, String>() {
                     @Override
@@ -409,21 +403,22 @@ public class StreamingJob {
                     }
                 });
 
+//        stockPriceDataStream.print();
 
 
+//        stockPriceOutStream.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "multinode", new SimpleStringSchema()));
 
-
-        stockPriceOutStream.addSink(new FlinkKafkaProducer08<>("localhost:9092", "StockPrices", new SimpleStringSchema()));
-        tweetTermsOutStream.addSink(new FlinkKafkaProducer08<>("localhost:9092", "TweetTerms", new SimpleStringSchema()));
-        TEMOutStream.addSink(new FlinkKafkaProducer08<>("localhost:9092", "TEMTweets", new SimpleStringSchema()));
-        NPOutStream.addSink(new FlinkKafkaProducer08<>("localhost:9092", "NPTweets", new SimpleStringSchema()));
-        stockPriceUpOut.addSink(new FlinkKafkaProducer08<>("localhost:9092", "StockPriceUpEvents", new SimpleStringSchema()));
-        rateFluctuationOut.addSink(new FlinkKafkaProducer08<>("localhost:9092", "RateFluctuationEvents", new SimpleStringSchema()));
-        hotTopicOut.addSink(new FlinkKafkaProducer08<>("localhost:9092", "HotTopicEvents", new SimpleStringSchema()));
-        impactTweetSMOut.addSink(new FlinkKafkaProducer08<>("localhost:9092", "ImpactTweetSMEvents", new SimpleStringSchema()));
-        impactTweetCMOut.addSink(new FlinkKafkaProducer08<>("localhost:9092", "ImpactTweetCMEvents", new SimpleStringSchema()));
-        impactTweetCMOut.addSink(new FlinkKafkaProducer08<>("localhost:9092", "ImpactTweetCMEvents", new SimpleStringSchema()));
-        impactTweetStoreOut.addSink(new FlinkKafkaProducer08<>("localhost:9092", "ImpactTweetStoreEvents", new SimpleStringSchema()));
+        stockPriceOutStream.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "StockPrices", new SimpleStringSchema()));
+        tweetTermsOutStream.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "TweetTerms", new SimpleStringSchema()));
+        TEMOutStream.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "TEMTweets", new SimpleStringSchema()));
+        NPOutStream.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "NPTweets", new SimpleStringSchema()));
+        stockPriceUpOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "StockPriceUpEvents", new SimpleStringSchema()));
+        rateFluctuationOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "RateFluctuationEvents", new SimpleStringSchema()));
+        hotTopicOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "HotTopicEvents", new SimpleStringSchema()));
+        impactTweetSMOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "ImpactTweetSMEvents", new SimpleStringSchema()));
+        impactTweetCMOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "ImpactTweetCMEvents", new SimpleStringSchema()));
+        impactTweetCMOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "ImpactTweetCMEvents", new SimpleStringSchema()));
+        impactTweetStoreOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "ImpactTweetStoreEvents", new SimpleStringSchema()));
 
 
         env.execute("StreamingJob");
