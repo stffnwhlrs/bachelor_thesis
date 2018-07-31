@@ -3,52 +3,52 @@ package pojos;
 import java.util.Objects;
 
 public class RateFluctuation {
-    private String _symbol;
-    private double _minPrice;
-    private double _maxPrice;
-    private double _percent;
+    private String symbol;
+    private double minPrice;
+    private double maxPrice;
+    private double percent;
 
     public RateFluctuation() {}
 
     public RateFluctuation(String symbol, double minPrice, double maxPrice, double percent) {
 
-        this._symbol = symbol;
-        this._minPrice = minPrice;
-        this._maxPrice = maxPrice;
-        this._percent = percent;
+        this.symbol = symbol;
+        this.minPrice = minPrice;
+        this.maxPrice = maxPrice;
+        this.percent = percent;
     }
 
     public String getSymbol() {
-        return _symbol;
+        return symbol;
     }
 
     public void setSymbol(String symbol) {
-        this._symbol = symbol;
+        this.symbol = symbol;
     }
 
     public double getMinPrice() {
-        return _minPrice;
+        return minPrice;
     }
 
     public void setMinPrice(double minPrice) {
-        this._minPrice = minPrice;
+        this.minPrice = minPrice;
     }
 
     public double getMaxPrice() {
-        return _maxPrice;
+        return maxPrice;
     }
 
     public void setMaxPrice(double maxPrice) {
-        this._maxPrice = maxPrice;
+        this.maxPrice = maxPrice;
     }
 
 
     public double getPercent() {
-        return _percent;
+        return percent;
     }
 
     public void setPercent(double percent) {
-        this._percent = percent;
+        this.percent = percent;
     }
 
     @Override
@@ -56,10 +56,10 @@ public class RateFluctuation {
         if(obj instanceof RateFluctuation) {
             RateFluctuation other = (RateFluctuation) obj;
             return other.canEquals(this) &&
-                    Objects.equals(this._symbol, other._symbol) &&
-                    Objects.equals(String.valueOf(this._minPrice), String.valueOf(other._minPrice)) &&
-                    Objects.equals(String.valueOf(this._maxPrice), String.valueOf(other._maxPrice)) &&
-                    Objects.equals(String.valueOf(this._percent), String.valueOf(other._percent));
+                    Objects.equals(this.symbol, other.symbol) &&
+                    Objects.equals(String.valueOf(this.minPrice), String.valueOf(other.minPrice)) &&
+                    Objects.equals(String.valueOf(this.maxPrice), String.valueOf(other.maxPrice)) &&
+                    Objects.equals(String.valueOf(this.percent), String.valueOf(other.percent));
         } else {
             return false;
         }
@@ -67,18 +67,18 @@ public class RateFluctuation {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._symbol,
-                String.valueOf(this._minPrice),
-                String.valueOf(this._maxPrice),
-                String.valueOf(this._percent));
+        return Objects.hash(this.symbol,
+                String.valueOf(this.minPrice),
+                String.valueOf(this.maxPrice),
+                String.valueOf(this.percent));
     }
 
     @Override
     public String toString() {
-        return "symbol: " + this._symbol +
-                ", percent: " + this._percent +
-                ", min price: " + this._minPrice +
-                ", max price: " + this._maxPrice;
+        return "symbol: " + this.symbol +
+                ", percent: " + this.percent +
+                ", min price: " + this.minPrice +
+                ", max price: " + this.maxPrice;
     }
 
     public boolean canEquals(Object obj) {

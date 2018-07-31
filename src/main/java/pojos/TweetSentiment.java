@@ -1,8 +1,8 @@
 package pojos;
 
 public class TweetSentiment extends Tweet {
-    private String _polarity;
-    private double _confidence;
+    private String polarity;
+    private double confidence;
 
     public TweetSentiment() {}
 
@@ -14,30 +14,30 @@ public class TweetSentiment extends Tweet {
                 tweet.getName(),
                 tweet.getFullText());
 
-        this._polarity = polarity;
-        this._confidence = confidence;
+        this.polarity = polarity;
+        this.confidence = confidence;
     }
 
     public String getPolarity() {
-        return _polarity;
+        return polarity;
     }
 
     public void setPolarity(String polarity) {
-        this._polarity = polarity;
+        this.polarity = polarity;
     }
 
     public double getConfidence() {
-        return _confidence;
+        return confidence;
     }
 
     public void setConfidence(double confidence) {
-        this._confidence = confidence;
+        this.confidence = confidence;
     }
 
     @Override
     public String toString() {
-        return "tweet sentiment: text: " + this._text
-                + ", polarity: " + this._polarity
-                + ", confidence: " + this._confidence;
+        return "tweet sentiment: text: " + this.text
+                + ", polarity: " + this.polarity
+                + ", confidence: " + this.confidence;
     }
 }

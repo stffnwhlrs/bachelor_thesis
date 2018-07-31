@@ -4,37 +4,37 @@ import java.util.Objects;
 
 public class StockPrice {
 
-    private String _symbol;
-    private double _price;
+    private String symbol;
+    private double price;
 
     public StockPrice() {}
 
     public StockPrice(String symbol, double price) {
-        _symbol = symbol;
-        _price = price;
+        this.symbol = symbol;
+        this.price = price;
     }
 
     public String getSymbol() {
-        return _symbol;
+        return symbol;
     }
 
     public void setSymbol(String symbol) {
-        this._symbol = symbol;
+        this.symbol = symbol;
     }
 
     public double getPrice() {
-        return _price;
+        return price;
     }
 
     public void setPrice(double price) {
-        this._price = price;
+        this.price = price;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof StockPrice) {
             StockPrice other = (StockPrice) obj;
-            return other.canEquals(this) && _symbol.equals(other._symbol) && _price == other._price;
+            return other.canEquals(this) && this.symbol.equals(other.symbol) && this.price == other.price;
         }
         else {
             return false;
@@ -43,12 +43,12 @@ public class StockPrice {
 
     @Override
     public int hashCode() {
-        return Objects.hash(_symbol, _price);
+        return Objects.hash(symbol, price);
     }
 
     @Override
     public String toString() {
-        return "symbol: " + _symbol + ", price: " + _price;
+        return "symbol: " + symbol + ", price: " + price;
     }
 
     public boolean canEquals(Object obj) {

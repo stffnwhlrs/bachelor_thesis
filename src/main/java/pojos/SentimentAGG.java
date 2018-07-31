@@ -1,77 +1,77 @@
 package pojos;
 
 public class SentimentAGG {
-    private int _positives;
-    private int _neutrals;
-    private int _negatives;
-    private int _count;
-    private double _ratioPositives;
-    private double _ratioNegatives;
+    private int positives;
+    private int neutrals;
+    private int negatives;
+    private int count;
+    private double ratioPositives;
+    private double ratioNegatives;
 
     public SentimentAGG() {}
 
     public SentimentAGG(int positives, int neutrals, int negatives, int count, double ratioPositives, double ratioNegatives) {
-    this._positives = positives;
-    this._neutrals = neutrals;
-    this._negatives = negatives;
-    this._count = count;
-    this._ratioPositives = ratioPositives;
-    this._ratioNegatives = ratioNegatives;
+    this.positives = positives;
+    this.neutrals = neutrals;
+    this.negatives = negatives;
+    this.count = count;
+    this.ratioPositives = ratioPositives;
+    this.ratioNegatives = ratioNegatives;
     }
 
     public int getPositive() {
-        return _positives;
+        return positives;
     }
 
     public void setPpositive(int positive) {
-        this._positives = positive;
+        this.positives = positive;
     }
 
     public int getNeutral() {
-        return _neutrals;
+        return neutrals;
     }
 
     public void setNeutral(int neutral) {
-        this._neutrals = neutral;
+        this.neutrals = neutral;
     }
 
     public int getNegative() {
-        return _negatives;
+        return negatives;
     }
 
     public void setNegative(int negative) {
-        this._negatives = negative;
+        this.negatives = negative;
     }
 
     public int getCount() {
-        return _count;
+        return count;
     }
 
     public void setCount(int count) {
-        this._count = count;
+        this.count = count;
     }
 
     public double getRatioPositive() {
-        return _ratioPositives;
+        return ratioPositives;
     }
 
     public void setRatioPositive(double ratioPositive) {
-        this._ratioPositives = ratioPositive;
+        this.ratioPositives = ratioPositive;
     }
 
     public double getRatioNegative() {
-        return _ratioNegatives;
+        return ratioNegatives;
     }
 
     public void setRatioNegative(double ratioNegative) {
-        this._ratioNegatives = ratioNegative;
+        this.ratioNegatives = ratioNegative;
     }
 
 
     @Override
     public String toString() {
-        return "sentiment agg: positive ratio: " + this._ratioPositives
-                + ", positives: " + this._positives
-                + ", count: " + this._count;
+        return "sentiment agg: positive ratio: " + this.ratioPositives
+                + ", positives: " + this.positives
+                + ", count: " + this.count;
     }
 }

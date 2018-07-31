@@ -3,27 +3,27 @@ package pojos;
 import java.util.Objects;
 
 public class TweetRateFluctuation extends Tweet{
-    private String _originalType;
-    private String _symbol;
-    private double _minPrice;
-    private double _maxPrice;
-    private double _percent;
+    private String originalType;
+    private String symbol;
+    private double minPrice;
+    private double maxPrice;
+    private double percent;
 
     public TweetRateFluctuation() {}
 
     public TweetRateFluctuation(RateFluctuation rateFluctuation) {
-        this._originalType = "RateFluctuation";
-        this._symbol = rateFluctuation.getSymbol();
-        this._minPrice = rateFluctuation.getMinPrice();
-        this._maxPrice = rateFluctuation.getMaxPrice();
-        this._percent = rateFluctuation.getPercent();
+        this.originalType = "RateFluctuation";
+        this.symbol = rateFluctuation.getSymbol();
+        this.minPrice = rateFluctuation.getMinPrice();
+        this.maxPrice = rateFluctuation.getMaxPrice();
+        this.percent = rateFluctuation.getPercent();
 
-        this._id = -1;
-        this._text = null;
-        this._userId = -1;
-        this._screenName = null;
-        this._name = null;
-        this._fullText = null;
+        this.id = -1;
+        this.text = null;
+        this.userId = -1;
+        this.screenName = null;
+        this.name = null;
+        this.fullText = null;
     }
 
     public TweetRateFluctuation(Tweet tweet) {
@@ -34,51 +34,51 @@ public class TweetRateFluctuation extends Tweet{
                 tweet.getName(),
                 tweet.getFullText());
 
-        this._originalType = "Tweet";
-        this._symbol = null;
-        this._minPrice = -1;
-        this._maxPrice = -1;
-        this._percent = -1;
+        this.originalType = "Tweet";
+        this.symbol = null;
+        this.minPrice = -1;
+        this.maxPrice = -1;
+        this.percent = -1;
     }
 
     public String getOriginalType() {
-        return _originalType;
+        return originalType;
     }
 
     public void setOriginalType(String originalType) {
-        this._originalType = originalType;
+        this.originalType = originalType;
     }
 
     public String getSymbol() {
-        return _symbol;
+        return symbol;
     }
 
     public void setSymbol(String symbol) {
-        this._symbol = symbol;
+        this.symbol = symbol;
     }
 
     public double getMinPrice() {
-        return _minPrice;
+        return minPrice;
     }
 
     public void setMinPrice(double minPrice) {
-        this._minPrice = minPrice;
+        this.minPrice = minPrice;
     }
 
     public double getMaxPrice() {
-        return _maxPrice;
+        return maxPrice;
     }
 
     public void setMaxPrice(double maxPrice) {
-        this._maxPrice = maxPrice;
+        this.maxPrice = maxPrice;
     }
 
     public double getPercent() {
-        return _percent;
+        return percent;
     }
 
     public void setPercent(double percent) {
-        this._percent = percent;
+        this.percent = percent;
     }
 
     @Override
@@ -87,11 +87,11 @@ public class TweetRateFluctuation extends Tweet{
             TweetRateFluctuation other = (TweetRateFluctuation) obj;
             return other.canEquals(this) &&
                     super.equals(obj) &&
-                    Objects.equals(this._originalType, other._originalType) &&
-                    Objects.equals(this._symbol, other._symbol) &&
-                    Objects.equals(String.valueOf(this._minPrice), String.valueOf(other._minPrice)) &&
-                    Objects.equals(String.valueOf(this._maxPrice), String.valueOf(other._maxPrice)) &&
-                    Objects.equals(String.valueOf(this._percent), String.valueOf(other._percent));
+                    Objects.equals(this.originalType, other.originalType) &&
+                    Objects.equals(this.symbol, other.symbol) &&
+                    Objects.equals(String.valueOf(this.minPrice), String.valueOf(other.minPrice)) &&
+                    Objects.equals(String.valueOf(this.maxPrice), String.valueOf(other.maxPrice)) &&
+                    Objects.equals(String.valueOf(this.percent), String.valueOf(other.percent));
         } else {
             return false;
         }
@@ -100,19 +100,19 @@ public class TweetRateFluctuation extends Tweet{
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(),
-                this._originalType,
-                this._symbol,
-                this._minPrice,
-                this._maxPrice,
-                this._percent);
+                this.originalType,
+                this.symbol,
+                this.minPrice,
+                this.maxPrice,
+                this.percent);
     }
 
     @Override
     public String toString() {
-        return "orginal type: " + this._originalType
+        return "orginal type: " + this.originalType
                 + ", "+ super.toString()
-                + ", symbol: " + this._symbol
-                +  ", percent: " + this._percent;
+                + ", symbol: " + this.symbol
+                +  ", percent: " + this.percent;
     }
 
     @Override

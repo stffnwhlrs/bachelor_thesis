@@ -3,62 +3,62 @@ package pojos;
 import java.util.Objects;
 
 public class TweetSentimentAGG extends Tweet {
-    private String _originalType;
-    private int _count;
-    private double _ratioPositives;
-    private double _ratioNegatives;
+    private String originalType;
+    private int count;
+    private double ratioPositives;
+    private double ratioNegatives;
     
     public TweetSentimentAGG() {}
     
     public TweetSentimentAGG(SentimentAGG sentimentAGG) {
         super(-1, null, -1, null, null,null);
 
-        this._originalType = "SentimentAGG";
-        this._count = sentimentAGG.getCount();
-        this._ratioPositives = sentimentAGG.getRatioPositive();
-        this._ratioNegatives = sentimentAGG.getRatioNegative();
+        this.originalType = "SentimentAGG";
+        this.count = sentimentAGG.getCount();
+        this.ratioPositives = sentimentAGG.getRatioPositive();
+        this.ratioNegatives = sentimentAGG.getRatioNegative();
 
     }
     
     public TweetSentimentAGG(Tweet tweet) {
         super(tweet.getId(), tweet.getText(), tweet.getUserId(), tweet.getScreenName(),tweet.getName(),tweet.getFullText());
 
-        this._originalType = "Tweet";
-        this._count = -1;
-        this._ratioPositives = -1;
-        this._ratioNegatives = -1;
+        this.originalType = "Tweet";
+        this.count = -1;
+        this.ratioPositives = -1;
+        this.ratioNegatives = -1;
     }
 
     public String getOriginalType() {
-        return _originalType;
+        return originalType;
     }
 
     public void setOriginalType(String originalType) {
-        this._originalType = originalType;
+        this.originalType = originalType;
     }
 
     public int getCount() {
-        return _count;
+        return count;
     }
 
     public void setCount(int _count) {
-        this._count = _count;
+        this.count = _count;
     }
 
     public double getRatioPositives() {
-        return _ratioPositives;
+        return ratioPositives;
     }
 
     public void setRatioPositives(double ratioPositives) {
-        this._ratioPositives = ratioPositives;
+        this.ratioPositives = ratioPositives;
     }
 
     public double getRatioNegatives() {
-        return _ratioNegatives;
+        return ratioNegatives;
     }
 
     public void setRatioNegatives(double ratioNegatives) {
-        this._ratioNegatives = ratioNegatives;
+        this.ratioNegatives = ratioNegatives;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class TweetSentimentAGG extends Tweet {
             TweetSentimentAGG other = (TweetSentimentAGG) obj;
             return other.canEquals(this) &&
                     super.equals(other) &&
-                    Objects.equals(this._originalType, other._originalType);
+                    Objects.equals(this.originalType, other.originalType);
         } else {
             return false;
         }
@@ -75,7 +75,7 @@ public class TweetSentimentAGG extends Tweet {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), this._originalType);
+        return Objects.hash(super.hashCode(), this.originalType);
     }
 
     @Override
@@ -85,11 +85,11 @@ public class TweetSentimentAGG extends Tweet {
 
     @Override
     public String toString() {
-        return "original type: " + this._originalType
-                + " , screen name: " + this._screenName
-                + ", text: " + this._text
-                + ", count: " + this._count
-                + ", ratio positives:" + this._ratioPositives
-                + ", ratio negatives:" + this._ratioNegatives;
+        return "original type: " + this.originalType
+                + " , screen name: " + this.screenName
+                + ", text: " + this.text
+                + ", count: " + this.count
+                + ", ratio positives:" + this.ratioPositives
+                + ", ratio negatives:" + this.ratioNegatives;
     }
 }

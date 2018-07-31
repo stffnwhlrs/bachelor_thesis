@@ -1,77 +1,77 @@
 package pojos;
 
 public class Tweet {
-    protected long _id;
-    protected String _text;
-    protected long _userId;
-    protected String _screenName;
-    protected String _name;
-    protected String _fullText;
+    protected long id;
+    protected String text;
+    protected long userId;
+    protected String screenName;
+    protected String name;
+    protected String fullText;
 
     public Tweet(){}
 
     public Tweet(long id, String text, long userId, String screenName, String name, String fullText) {
-        this._id = id;
-        this._text = text;
-        this._userId = userId;
-        this._screenName = screenName;
-        this._name = name;
-        this._fullText = fullText;
+        this.id = id;
+        this.text = text;
+        this.userId = userId;
+        this.screenName = screenName;
+        this.name = name;
+        this.fullText = fullText;
     }
 
     public long getId() {
-        return _id;
+        return id;
     }
 
     public void setId(long id) {
-        this._id = id;
+        this.id = id;
     }
 
     public String getText() {
-        return _text;
+        return text;
     }
 
     public void setText(String text) {
-        this._text = text;
+        this.text = text;
     }
 
     public long getUserId() {
-        return _userId;
+        return userId;
     }
 
     public void setUserId(long userId) {
-        this._userId = userId;
+        this.userId = userId;
     }
 
     public String getScreenName() {
-        return _screenName;
+        return screenName;
     }
 
     public void setScreenName(String screenName) {
-        this._screenName = screenName;
+        this.screenName = screenName;
     }
 
     public String getName() {
-        return _name;
+        return name;
     }
 
     public void setName(String name) {
-        this._name = name;
+        this.name = name;
     }
 
     public String getFullText() {
-        return _fullText;
+        return fullText;
     }
 
     public void setFullText(String fullText) {
-        this._fullText = fullText;
+        this.fullText = fullText;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Tweet) {
             Tweet other = (Tweet) obj;
-            return other.canEquals(this) && this._id == other._id;
+            return other.canEquals(this) && this.id == other.id;
         } else {
             return false;
         }
@@ -79,12 +79,12 @@ public class Tweet {
 
     @Override
     public int hashCode() {
-        return Long.hashCode(this._id);
+        return Long.hashCode(this.id);
     }
 
     @Override
     public String toString() {
-        return "tweet ID: " + this._id + ", screen name: " + this._screenName + ", text: " + this._text;
+        return "tweet ID: " + this.id + ", screen name: " + this.screenName + ", text: " + this.text;
     }
 
     public boolean canEquals(Object obj){

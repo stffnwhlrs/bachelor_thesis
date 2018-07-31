@@ -7,72 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b30e963-3d69-4d82-b390-9f9ed5bb00eb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/MongoDBSimpleConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/tweetSentimentsAGG/SentimentEnrichment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tweetSentimentsAGG/SentimentEnrichment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/tweetSentimentsAGG/SentimentsAGG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tweetSentimentsAGG/SentimentsAGG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/HotTopic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/HotTopic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/RateFluctuation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/RateFluctuation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pojos/SentimentAGG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/SentimentAGG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StreamingJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/tweetSentimentsAGG/SentimentEnrichment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/tweetSentimentsAGG/SentimentsAGG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/constraints/StockPriceConstraint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/constraints/TweetConstraint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filters/NoRTFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filters/OnlyNPTweets.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filters/OnlyTEMTweets.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filters/OnlyTSLAFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filters/OriginalTypeTweet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impactTweetCMPattern/ImpactTweetCMAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impactTweetCMPattern/ImpactTweetCMCondition1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impactTweetCMPattern/ImpactTweetCMCondition2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impactTweetSMPattern/ImpactTweetSMAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impactTweetSMPattern/ImpactTweetSMCondition1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impactTweetSMPattern/ImpactTweetSMCondition2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/RateFluctuationToTweetRateFluctuation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/SentimentAGGToTweetSentimentAGG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/TweetToTweetRateFluctuation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/TweetToTweetSentimentAGG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mediaPresencePattern/MediaPresenceAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mediaPresencePattern/MediaPresenceCondition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/HotTopic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/ImpactTweet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/ImpactTweetCM.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/ImpactTweetSM.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/ImpactTweetStore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/RateFluctuation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/SentimentAGG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/StockPrice.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/StockPriceUp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/Tweet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/TweetRateFluctuation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/TweetSentiment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojos/TweetSentimentAGG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rateFluctuationPattern/RateFluctuationAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rateFluctuationPattern/RateFluctuationCondition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sources/SingleStockSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sources/TwitterTermsSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sources/TwitterUsersSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/stockPriceUpPattern/StockPriceUpAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/stockPriceUpPattern/StockPriceUpCondition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/translations/StockPriceTranslation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/translations/TweetTranslation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/StockPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/StockPrice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/Tweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/Tweet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctuation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctuation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/TweetSentiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/TweetSentiment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,29 +30,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StockPriceUp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tweet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pojos/Tweet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TweetSentiment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TweetSentiment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pojos/TweetSentiment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+            <state relative-caret-position="78">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TweetSentimentAGG.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -144,16 +78,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/pojos/HotTopic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mediaPresencePattern/MediaPresenceAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mediaPresencePattern/MediaPresenceCondition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pojos/RateFluctuation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctationUnion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctuationUnion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mappers/TweetToTweetRateFluctuation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mappers/RateFluctuationToTweetRateFluctuation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctuation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/filters/OriginalTypeTweet.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetCMPattern/ImpactTweetCondition1.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetCMPattern/ImpactTweetCondition2.java" />
         <option value="$PROJECT_DIR$/src/main/java/impactTweetCMPattern/ImpactTweetCMAction.java" />
@@ -195,6 +119,16 @@
         <option value="$PROJECT_DIR$/src/main/java/app/MongoDBSimpleConsumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/StreamingJob.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojos/SentimentAGG.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/HotTopic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/RateFluctuation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/SentimentAGG.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/StockPrice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/Tweet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctuation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/TweetSentiment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java" />
       </list>
     </option>
   </component>
@@ -231,8 +165,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -264,21 +196,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bachelor_thesis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bachelor_thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="pojos" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -408,11 +334,12 @@
       <workItem from="1532350339932" duration="15718000" />
       <workItem from="1532786693383" duration="401000" />
       <workItem from="1532807590876" duration="1901000" />
+      <workItem from="1533043724398" duration="623000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191770000" />
+    <option name="totallyTimeSpent" value="192393000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,7 +351,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="840" height="978" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <layout>
       <window_info anchor="right" id="PlantUML" order="9" />
       <window_info anchor="right" id="Palette" order="3" />
@@ -435,27 +362,27 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30471203" />
       <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30471203" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4973822" visible="true" weight="0.39404762" />
-      <window_info anchor="bottom" id="Statistic" order="11" visible="true" weight="0.36585367" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4973822" visible="true" weight="0.17239584" />
+      <window_info anchor="bottom" id="Statistic" order="11" visible="true" weight="0.31979695" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info id="Structure" order="1" sideWeight="0.5026178" side_tool="true" weight="0.19702381" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32984293" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32984293" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32984293" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -606,13 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="92" column="61" selection-start-line="92" selection-start-column="61" selection-end-line="92" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/impactTweetSMPattern/ImpactTweetSMAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -676,9 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -686,13 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="24" column="66" lean-forward="true" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctuation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -730,7 +640,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/StreamingJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="329">
           <caret line="429" column="109" selection-start-line="429" selection-start-column="87" selection-end-line="429" selection-end-column="109" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -740,8 +650,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojos/HotTopic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state relative-caret-position="138">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -768,8 +678,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojos/ImpactTweetStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="30" column="49" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="49" />
+        <state relative-caret-position="529">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -778,22 +688,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojos/RateFluctuation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
-          <caret line="55" column="44" lean-forward="true" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+        <state relative-caret-position="-76">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojos/SentimentAGG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        <state relative-caret-position="-544">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojos/StockPrice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="39">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
           <folding>
             <element signature="e#899#900#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
@@ -803,24 +713,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/Tweet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        <state relative-caret-position="-414">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/Tweet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/StockPriceUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="106">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/TweetRateFluctuation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojos/TweetSentiment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        <state relative-caret-position="78">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojos/TweetSentimentAGG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
         </state>
       </provider>
     </entry>

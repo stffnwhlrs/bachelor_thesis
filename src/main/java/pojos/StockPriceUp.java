@@ -4,42 +4,42 @@ import java.util.List;
 import java.util.Objects;
 
 public class StockPriceUp {
-    private String _symbol;
-    private double _startPrice;
-    private double _endPrice;
-    private List<StockPrice> _stockPrices;
+    private String symbol;
+    private double startPrice;
+    private double endPrice;
+    private List<StockPrice> stockPrices;
 
     public StockPriceUp() {}
 
     public StockPriceUp(String symbol, double startPrice, double endPrice, List<StockPrice> stockPrices) {
-        _symbol = symbol;
-        _startPrice = startPrice;
-        _endPrice = endPrice;
-        _stockPrices = stockPrices;
+        this.symbol = symbol;
+        this.startPrice = startPrice;
+        this.endPrice = endPrice;
+        this.stockPrices = stockPrices;
     }
 
     public String getSymbol() {
-        return _symbol;
+        return symbol;
     }
 
     public void setSymbol(String symbol) {
-        this._symbol = symbol;
+        this.symbol = symbol;
     }
 
     public double getStartPrice() {
-        return _startPrice;
+        return startPrice;
     }
 
     public void setStartPrice(double startPrice) {
-        this._startPrice = startPrice;
+        this.startPrice = startPrice;
     }
 
     public double getEndPrice() {
-        return _endPrice;
+        return endPrice;
     }
 
     public void setEndPrice(double endPrice) {
-        this._endPrice = endPrice;
+        this.endPrice = endPrice;
     }
 
     @Override
@@ -47,25 +47,25 @@ public class StockPriceUp {
         if(obj instanceof  StockPriceUp) {
             StockPriceUp other = (StockPriceUp) obj;
             return other.canEquals(this) &&
-                    Objects.equals(this._symbol, other._symbol) &&
-                    this._startPrice == other._startPrice &&
-                    this._endPrice == other. _endPrice &&
-                    Objects.equals(this._stockPrices, other._stockPrices);
+                    Objects.equals(this.symbol, other.symbol) &&
+                    this.startPrice == other.startPrice &&
+                    this.endPrice == other.endPrice &&
+                    Objects.equals(this.stockPrices, other.stockPrices);
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._symbol, this._startPrice, this._endPrice, this._stockPrices);
+        return Objects.hash(this.symbol, this.startPrice, this.endPrice, this.stockPrices);
     }
 
     @Override
     public String toString() {
-        return "symbol: " + this._symbol +
-                ", start price: " + this._startPrice +
-                ", end price: " + this._endPrice +
-                ", number stock prices: " + this._stockPrices.size();
+        return "symbol: " + this.symbol +
+                ", start price: " + this.startPrice +
+                ", end price: " + this.endPrice +
+                ", number stock prices: " + this.stockPrices.size();
     }
 
     public boolean canEquals(Object obj) {
