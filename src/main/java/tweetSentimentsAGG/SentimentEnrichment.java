@@ -1,4 +1,4 @@
-package app.tweetSentimentsAGG;
+package tweetSentimentsAGG;
 
 import com.aylien.textapi.TextAPIClient;
 import com.aylien.textapi.parameters.SentimentParams;

@@ -2,8 +2,8 @@ package pojos;
 
 public class SentimentAGG {
     private int _positives;
-    private int _neutral;
-    private int _negative;
+    private int _neutrals;
+    private int _negatives;
     private int _count;
     private double _ratioPositives;
     private double _ratioNegatives;
@@ -12,8 +12,8 @@ public class SentimentAGG {
 
     public SentimentAGG(int positives, int neutrals, int negatives, int count, double ratioPositives, double ratioNegatives) {
     this._positives = positives;
-    this._neutral = neutrals;
-    this._negative = negatives;
+    this._neutrals = neutrals;
+    this._negatives = negatives;
     this._count = count;
     this._ratioPositives = ratioPositives;
     this._ratioNegatives = ratioNegatives;
@@ -28,19 +28,19 @@ public class SentimentAGG {
     }
 
     public int getNeutral() {
-        return _neutral;
+        return _neutrals;
     }
 
     public void setNeutral(int neutral) {
-        this._neutral = neutral;
+        this._neutrals = neutral;
     }
 
     public int getNegative() {
-        return _negative;
+        return _negatives;
     }
 
     public void setNegative(int negative) {
-        this._negative = negative;
+        this._negatives = negative;
     }
 
     public int getCount() {

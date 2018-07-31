@@ -1,5 +1,7 @@
 package pojos;
 
+import org.bson.Document;
+
 import java.util.Objects;
 
 public class ImpactTweetStore extends ImpactTweetSM {
@@ -24,6 +26,17 @@ public class ImpactTweetStore extends ImpactTweetSM {
 
     public void setPercent(double percent) {
         this.percent = percent;
+    }
+
+    public Document getImpactTweetStoreAsDocument() {
+        Document result = new Document("name", this.name)
+                .append("text", this.text)
+                .append("count", this.count)
+                .append("ratioPositives", this.ratioPositives)
+                .append("ratioNegatives", this.ratioNegatives)
+                .append("percent", this.percent);
+
+        return result;
     }
 
     @Override

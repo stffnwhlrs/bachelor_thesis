@@ -1,4 +1,4 @@
-package app.tweetSentimentsAGG;
+package tweetSentimentsAGG;
 
 import org.apache.flink.streaming.api.functions.windowing.AllWindowFunction;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;

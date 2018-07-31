@@ -19,7 +19,7 @@
 package app;
 
 
-import app.tweetSentimentsAGG.SentimentsAGG;
+import tweetSentimentsAGG.SentimentsAGG;
 import impactTweetSMPattern.ImpactTweetSMAction;
 import impactTweetSMPattern.ImpactTweetSMCondition1;
 import impactTweetSMPattern.ImpactTweetSMCondition2;
@@ -33,7 +33,7 @@ import impactTweetCMPattern.ImpactTweetCMAction;
 import impactTweetCMPattern.ImpactTweetCMCondition1;
 import impactTweetCMPattern.ImpactTweetCMCondition2;
 import mappers.RateFluctuationToTweetRateFluctuation;
-import app.tweetSentimentsAGG.SentimentEnrichment;
+import tweetSentimentsAGG.SentimentEnrichment;
 import mappers.TweetToTweetRateFluctuation;
 import mediaPresencePattern.MediaPresenceAction;
 import mediaPresencePattern.MediaPresenceCondition;
@@ -403,6 +403,15 @@ public class StreamingJob {
                     }
                 });
 
+        DataStream<String> sentimentAGGOut = sentimentAGGDataStream
+                .map(new MapFunction<SentimentAGG, String>() {
+                    @Override
+                    public String map(SentimentAGG value) throws Exception {
+                        return value.toString();
+                    }
+                });
+
+
 //        stockPriceDataStream.print();
 
 
@@ -415,8 +424,8 @@ public class StreamingJob {
         stockPriceUpOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "StockPriceUpEvents", new SimpleStringSchema()));
         rateFluctuationOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "RateFluctuationEvents", new SimpleStringSchema()));
         hotTopicOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "HotTopicEvents", new SimpleStringSchema()));
+        sentimentAGGOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "SentimentAGGEvents", new SimpleStringSchema()));
         impactTweetSMOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "ImpactTweetSMEvents", new SimpleStringSchema()));
-        impactTweetCMOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "ImpactTweetCMEvents", new SimpleStringSchema()));
         impactTweetCMOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "ImpactTweetCMEvents", new SimpleStringSchema()));
         impactTweetStoreOut.addSink(new FlinkKafkaProducer08<>("192.168.178.23:9092", "ImpactTweetStoreEvents", new SimpleStringSchema()));
 
